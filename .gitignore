@@ -1,0 +1,86 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build directories
+build/
+dist/
+out/
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Dependency directories
+jspm_packages/
+
+# Debug logs
+*.log
+logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# MongoDB
+data/db/
+
+# React
+.cache/
+.eslintcache
+
+# Next.js
+.next/
+
+# Serverless
+.serverless/
+
+# Misc
+*.pem
+*.tmp
+*.bak
+*.zip
+*.tar.gz
+*.rar
+
+# Local development
+*.local
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Compiled files
+*.class
+*.exe
+*.dll
+*.so
+*.o
+*.a
+
+# Logs and databases
+*.sql
+*.sqlite
+
+# Optional
+!.env.example # Keep example environment files
