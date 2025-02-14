@@ -1,1 +1,0 @@
-# CrowdSourced-Disaster-Relief-Platform
