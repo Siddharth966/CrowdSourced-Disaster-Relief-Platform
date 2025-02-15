@@ -10,5 +10,3 @@ export const getDetails = async (id) => {
     return null; // Explicitly return null to avoid undefined issues
   }
 };
-
-

@@ -84,3 +84,83 @@ export const loginFields = [
   },
 ];
 
+export const complaintFields = [
+  {
+    name: "complaint",
+    type: "text",
+    label: "Complaint",
+    placeholder: "Enter Complaint",
+    required: true,
+  },
+  {
+    name: "address",
+    type: "text",
+    label: "Address",
+    placeholder: "Enter Accident ",
+    required: true,
+  },
+  {
+    name: "landmark",
+    type: "text",
+    label: "Landmark",
+    placeholder: "Nearby landmark (if any)",
+    required: false,
+  },
+  {
+    name: "latitude",
+    type: "number",
+    label: "Latitude (Optional)",
+    placeholder: "Enter GPS coordinates",
+    required: false,
+  },
+  {
+    name: "longitude",
+    type: "number",
+    label: "Longitude (Optional)",
+    placeholder: "Enter GPS coordinates",
+    required: false,
+  },
+  {
+    name: "severity",
+    type: "radio",
+    label: "Severity",
+    options: ["Minor", "Moderate", "Severe"],
+    required: true,
+  },
+  {
+    name: "photos",
+    type: "file",
+    label: "Upload Photos",
+    accept: "image/*",
+    multiple: true,
+    required: false,
+  },
+  {
+    name: "urgency",
+    type: "radio",
+    label: "Urgency",
+    options: ["Low", "Medium", "High"],
+    required: true,
+  },
+  {
+    name: "damage_desc",
+    type: "text",
+    label: "Any Damage?",
+    placeholder: "Enter Damage",
+    required: false,
+  },
+  {
+    name: "name",
+    type: "text",
+    label: "Name (Optional)",
+    placeholder: "Enter name",
+    required: false,
+  },
+  {
+    name: "email",
+    type: "email",
+    label: "Email",
+    placeholder: "Enter Email",
+    required: false,
+  },
+];
