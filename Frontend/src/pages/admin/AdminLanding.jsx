@@ -1,5 +1,5 @@
 import React from 'react'
-import UserNavbar from '../../components/userNavbar'
+import UserNavbar from '../../components/UserNavbar'
 
 const AdminLanding = () => {
   return (

@@ -15,15 +15,15 @@ function App() {
     <>
       <Router>
         <ToastContainer
-          position="top-right" // Position of the toast
-          autoClose={1000} // Auto-close after 3 seconds
-          hideProgressBar={true} // Show/hide progress bar
-          newestOnTop={false} // New toasts appear below older ones
-          closeOnClick // Close toast on click
-          rtl={false} // Right-to-left layout
-          pauseOnFocusLoss // Pause toast when the window loses focus
-          draggable // Allow dragging to dismiss
-          pauseOnHover // Pause toast on hover
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
         />
         <Routes>
           <Route path="/" element={<Landing />} />
