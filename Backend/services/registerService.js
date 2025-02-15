@@ -1,18 +1,17 @@
-import { User } from "../models/User.js"; // Import your 
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken"
+import { User } from "../models/User.js"; // Import your
+import jwt from "jsonwebtoken";
 
 export const authService = {
-  register: async (data) => {
+  register: async (payload) => {
     try {
-      const { email } = data;
+      const { email } = payload;
       let user = await User.findOne({ email });
       if (user) {
         return { status: 400, message: "Email already registered" };
       }
 
       // Save user based on type
-      let newUser = new User(data);
+      let newUser = new User(payload);
       await newUser.save();
       return { status: 201, message: "User registered successfully" };
     } catch (error) {
@@ -20,8 +19,8 @@ export const authService = {
     }
   },
 
-  login: async(email, password)=> {
-    console.log('inside login')
+  login: async (email, password) => {
+    console.log("inside login");
     // Input validation
     if (!email || !password) {
       throw new Error("Email and password are required");
@@ -29,7 +28,7 @@ export const authService = {
 
     // Find user by email
     const user = await User.findOne({ email });
-    console.log('user',user)
+    console.log("user", user);
     if (!user) {
       throw new Error("Invalid email or password");
     }
@@ -44,7 +43,7 @@ export const authService = {
       {
         id: user._id,
         email: user.email,
-        user_type :user.user_type
+        user_type: user.user_type,
       },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || "1h" }
@@ -55,9 +54,8 @@ export const authService = {
       token,
       user: {
         id: user._id,
-        email: user.email, 
-        user_type :user.user_type
-
+        email: user.email,
+        user_type: user.user_type,
       },
     };
   },
@@ -78,6 +76,4 @@ export const authService = {
   },
 };
 
-
-
-export default authService
+export default authService;

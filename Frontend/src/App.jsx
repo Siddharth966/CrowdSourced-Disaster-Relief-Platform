@@ -8,6 +8,7 @@ import VolunteerLanding from "./pages/volunteer/VolunteerLanding";
 import ErLanding from "./pages/emergency-resp/ErLanding";
 import RegulerUserLanding from "./pages/regular-user/RegulerUserLanding";
 import PrivateRoute from "./components/PrivateRoute";
+import ComplaintForm from "./components/regular-user/ComplaintForm";
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
 
           <Route element={<PrivateRoute />}>
             <Route path="/regular-user/:id" element={<RegulerUserLanding />} />
+            <Route
+              path="/regular-user/:id/complaint"
+              element={<ComplaintForm />}
+            />
           </Route>
         </Routes>
       </Router>
