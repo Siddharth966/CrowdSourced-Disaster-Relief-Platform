@@ -11,7 +11,10 @@ const userSchema = new mongoose.Schema({
     unique: true, // Ensure email is unique
     trim: true,
     lowercase: true, // Convert email to lowercase
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please enter a valid email"], // Validate email format
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      "Please enter a valid email",
+    ], // Validate email format
   },
   password: {
     type: String,
@@ -21,7 +24,7 @@ const userSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: [true, "Gender is required"],
-    enum: ["male", "female", "other"], // Restrict gender to specific values
+    enum: ["Male", "Female", "Other"], // Restrict gender to specific values
   },
   phone: {
     type: String,

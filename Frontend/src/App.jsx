@@ -15,15 +15,15 @@ function App() {
     <>
       <Router>
         <ToastContainer
-          position="top-right" 
-          autoClose={1000} 
-          hideProgressBar={true} 
-          newestOnTop={false} 
-          closeOnClick 
-          rtl={false} 
-          pauseOnFocusLoss 
-          draggable 
-          pauseOnHover 
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
         />
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -40,9 +40,11 @@ function App() {
 
           <Route element={<PrivateRoute />}>
             <Route path="/regular-user/:id" element={<RegulerUserLanding />} />
-            <Route path="/regular-user/:id/complaint" element={<ComplaintForm />} />
+            <Route
+              path="/regular-user/:id/complaint"
+              element={<ComplaintForm />}
+            />
           </Route>
-
         </Routes>
       </Router>
     </>
