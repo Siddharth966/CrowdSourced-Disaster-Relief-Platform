@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'; // For routing
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-600 p-4 shadow-lg">
+    <nav className="bg-blue-400 p-4 shadow-lg"
+    
+    >
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo or Brand Name */}
         <div className='w-1/2'>
