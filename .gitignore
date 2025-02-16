@@ -16,7 +16,7 @@ yarn-error.log
 build/
 dist/
 out/
-
+uploads/
 # IDE and Editor files
 .vscode/
 .idea/
