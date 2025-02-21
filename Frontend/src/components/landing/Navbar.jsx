@@ -40,7 +40,7 @@ const Navbar = () => {
         </ul>
 
         {/* Register Button */}
-        <div class="flex space-x-5 w-1/3">
+        <div className="flex space-x-5 w-1/3">
         <Link
           to="/register"
           className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"

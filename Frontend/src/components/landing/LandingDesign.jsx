@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import MiddleImage from "../../assets/middleImage.png";
 import { images } from "../../constants/Images";
 import Footer from "./Footer";
