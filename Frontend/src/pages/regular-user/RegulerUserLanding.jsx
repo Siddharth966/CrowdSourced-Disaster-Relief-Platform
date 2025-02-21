@@ -26,7 +26,6 @@ const RegulerUserLanding = () => {
     const fetchComplaint = async () => {
       try {
         const response = await getComplaints();
-        console.log("response", response);
         setComplaints(response.data);
       } catch (error) {
         console.error("Error fetching user details:", error);
