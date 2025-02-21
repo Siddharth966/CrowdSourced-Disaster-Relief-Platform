@@ -4,6 +4,7 @@ import axios from "axios";
 import { baseUrl } from "../../constants/env";
 import { complaintFields } from "../../constants/forms";
 import { commonClasses } from "../../constants/styleClass";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ComplaintForm = () => {
   const initialFormState = complaintFields.reduce((acc, field) => {
@@ -13,7 +14,8 @@ const ComplaintForm = () => {
 
   const [formData, setFormData] = useState(initialFormState);
   const [files, setFiles] = useState(null); // To handle file uploads
-
+  const navigate = useNavigate();
+  const { id } = useParams();
   const handleChange = (e) => {
     if (e.target.type === "file") {
       setFiles(e.target.files); // Handle file selection (ensure files is a FileList object)
@@ -51,8 +53,9 @@ const ComplaintForm = () => {
       );
       if (response.status === 201) {
         toast.success("Complaint raised successfully!");
-        setFormData(initialFormState); // Reset form data
-        setFiles(null); // Reset file input (clear file selection)
+        setFormData(initialFormState);
+        setFiles(null);
+        navigate(`/regular-user/${id}`);
       }
     } catch (error) {
       toast.error(
