@@ -37,7 +37,7 @@ export const createComplaint = async (req, res) => {
 export const getComplaints = async (req, res) => {
   try {
     const result = await regularUserService.getAll(Complaint, req.body);
-    res.status(201).json({
+    res.status(200).json({
       message: result.message,
       data: result.data,
     });

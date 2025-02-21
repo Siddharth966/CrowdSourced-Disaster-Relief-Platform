@@ -63,13 +63,18 @@ const Login = () => {
       }
     } catch (error) {
       // Handle errors
-      toast.error(error.response?.data?.message || "Login failed. Please try again.");
+      toast.error(
+        error.response?.data?.message || "Login failed. Please try again."
+      );
     }
   };
 
   const renderFormField = (field) => {
     return (
-      <div key={field.name} className="flex items-center justify-between w-full">
+      <div
+        key={field.name}
+        className="flex items-center justify-between w-full"
+      >
         <label htmlFor={field.name} className="w-1/3 text-gray-700 font-medium">
           {field.label}
         </label>

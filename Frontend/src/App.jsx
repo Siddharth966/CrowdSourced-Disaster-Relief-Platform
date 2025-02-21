@@ -6,8 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RegulerUserLanding from "./pages/regular-user/RegulerUserLanding";
 import ComplaintForm from "./components/regular-user/ComplaintForm";
-import UserLanding from "./pages/";
-
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
     <>
@@ -28,7 +27,7 @@ function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/user/:id" element={<UserLanding />} />
+          <Route path="/regular-user/:id" element={<RegulerUserLanding />} />
 
           <Route
             path="/regular-user/:id/complaint"

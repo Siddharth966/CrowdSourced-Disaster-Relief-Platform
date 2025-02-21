@@ -1,51 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
+import {
+  btnClass,
+  colorPipeSeverity,
+  colorPipeUrgency,
+} from "../../constants/styleClass";
+import ComplaintDetails from "./ComplaintDetails";
 
 const ComplaintCard = ({ items }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [selectedComplaint, setSelectedComplaint] = useState(null); // State to store the selected complaint
+
+  // Function to open the modal with the selected complaint
+  const modalAction = (item) => {
+    setSelectedComplaint(item); // Set the selected complaint
+    setIsModalOpen(true); // Open the modal
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedComplaint(null); // Clear selected complaint when modal is closed
+  };
+
   return (
-    <div className="flex flex-wrap gap-4 p-4">
+    <div className="flex flex-wrap gap-4 p-2 justify-center">
       {items &&
         items.map((item) => (
           <div
             key={item._id}
-            className="rounded-xl shadow-lg p-3 bg-white text-gray-600 max-w-xs h-64 flex-shrink-0"
+            className="w-64 bg-blue-100 rounded-md text-center pl-2 pr-2 flex flex-col justify-between"
+            // Set a minimum height for uniform cards
           >
-            <div className="p-5 pt-10 bg-blue-50 rounded-lg relative h-60 ">
-              {/* Status */}
-              <div className="absolute top-0 right-0 bg-blue-200 rounded-full px-3 py-2 text-sm font-semibold text-blue-800 mt-3 text center">
-                <p>Urgency: {item.urgency}</p>
-                <p>Severity: {item.severity}</p>
+            <div className="space-y-2 mt-2">
+              <div
+                className="uppercase"
+                style={colorPipeSeverity(item.severity)}
+              >
+                {item.severity}
+              </div>
+              <div className="uppercase" style={colorPipeUrgency(item.urgency)}>
+                {item.urgency}
+              </div>
+            </div>
+
+            <div className="space-y-2 mt-2">
+              <div className="">
+                <h4 className="text-gray-500">Address</h4>
+                <p>{item.address}</p>
+                <p>{item.landmark || "NA"}</p>
               </div>
 
-              {/* Description */}
-              <p className="text-sm mt-16 ">
-                <strong className="font-semibold text-blue-800">
-                  Address:
-                </strong>{" "}
-                {item.address}
-                <br />
-                <strong className="font-semibold text-blue-800">
-                  Landmark:
-                </strong>{" "}
-                {item.landmark}
-                <br />
-                <strong className="font-semibold text-blue-800">
-                  Damage Description:
-                </strong>{" "}
-                {item.damageDesc}
-              </p>
-
-              {/* Action Button */}
-              <div className="mt-4 flex justify-end">
-                <a
-                  href="#"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md text-lg font-medium hover:bg-purple-700 transition-colors"
+              <div>
+                <h4 className="text-gray-500">Damage</h4>
+                <p>{item.damageDesc || "NA"}</p>
+                <button
+                  onClick={() => modalAction(item)} // Pass the current item to the modalAction
+                  className="bg-green-500 text-white mb-3 px-4 py-2 w-full hover:bg-green-600 cursor-pointer"
                 >
                   View Details
-                </a>
+                </button>
               </div>
             </div>
           </div>
         ))}
+
+      {/* ComplaintDetails modal */}
+      <ComplaintDetails
+        isModalOpen={isModalOpen}
+        selectedComplaint={selectedComplaint}
+        closeModal={closeModal} // Function to close the modal
+      />
     </div>
   );
 };
