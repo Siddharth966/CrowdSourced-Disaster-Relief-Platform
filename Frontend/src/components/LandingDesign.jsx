@@ -22,30 +22,38 @@ const LandingDesign = () => {
         style={{ backgroundImage: `url(${images[currentIndex]})` }}
       ></div>
 
-      {/* Quotes Section */}
-      <div className="flex justify-center gap-6 mt-6">
-        {/* First Quote */}
-        <div className="w-1/2 sm:w-1/2 p-6 text-center bg-white shadow-lg ">
-          <p className="text-2xl font-semibold italic text-gray-700  bg-orange-300">
-            "The best way to find yourself is to lose yourself in the service of
-            others."
-            <span className="block mt-2 text-lg font-medium text-gray-500">
-              — Mahatma Gandhi
-            </span>
-          </p>
-        </div>
+      
 
-        {/* Second Quote */}
-        <div className="w-1/2 sm:w-1/2 p-6 text-center bg-white shadow-lg">
-          <p className="text-2xl font-semibold italic text-gray-700 bg-orange-300">
-            "Volunteers don't get paid, not because they're worthless, but
-            because they're priceless."
-            <span className="block mt-2 text-lg font-medium text-gray-500">
-              — Sherry Anderson
-            </span>
-          </p>
-        </div>
+<div className="py-16 bg-gray-100">
+  <div className="max-w-5xl mx-auto px-4">
+    <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-10">
+      Inspiring Words of Wisdom
+    </h2>
+
+    <div className="flex flex-col md:flex-row gap-6 items-center">
+      {/* First Quote */}
+      <div className="w-full md:w-1/2 p-6 bg-white shadow-xl rounded-2xl border border-orange-300 transform hover:scale-105 transition duration-300">
+        <p className="text-xl font-semibold italic text-gray-800">
+          "The best way to find yourself is to lose yourself in the service of others."
+        </p>
+        <span className="block mt-4 text-lg font-medium text-gray-500">
+          — Mahatma Gandhi
+        </span>
       </div>
+
+      {/* Second Quote */}
+      <div className="w-full md:w-1/2 p-6 bg-white shadow-xl rounded-2xl border border-orange-300 transform hover:scale-105 transition duration-300">
+        <p className="text-xl font-semibold italic text-gray-800">
+          "Volunteers don't get paid, not because they're worthless, but because they're priceless."
+        </p>
+        <span className="block mt-4 text-lg font-medium text-gray-500">
+          — Sherry Anderson
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Static Image */}
       <img
@@ -53,6 +61,49 @@ const LandingDesign = () => {
         alt="Static Display"
         className="w-full mt-4 shadow-md"
       />
+
+      
+      {/* How It Works Section */}
+      <div className="bg-gray-100 py-8 mt-8">
+        <div className="max-w-screen-lg mx-auto text-center">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+            How Our Website Works
+          </h2>
+          <p className="text-lg text-gray-600">
+            Our website is designed to connect volunteers with communities in
+            need. Here's how it works:
+          </p>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                1. Sign Up
+              </h3>
+              <p className="text-gray-600">
+                Create an account to join our network of volunteers. It's quick
+                and easy!
+              </p>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                2. Find Opportunities
+              </h3>
+              <p className="text-gray-600">
+                Browse through various volunteering opportunities and choose
+                the one that suits you best.
+              </p>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                3. Make an Impact
+              </h3>
+              <p className="text-gray-600">
+                Get involved, contribute your time and skills, and make a real
+                difference in people's lives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Footer Section */}
       <footer className="bg-gray-800 text-white py-8 mt-8">
@@ -65,18 +116,10 @@ const LandingDesign = () => {
             contribution, no matter how small, can bring hope and relief to
             those in need.
           </p>
-          <div className="mt-6">
-            <a
-              href="#volunteer"
-              className="text-blue-400 hover:text-blue-500 text-lg font-medium"
-            >
-              Join Us as a Volunteer
-            </a>
-          </div>
+         
           <div className="mt-4">
-            <p className="text-base">
-              call us at <span className="text-blue-400">(123) 456-7890</span>
-            </p>
+          <hr/>
+          <br/>
             <p className="text-sm">
               © 2025 Disaster Relief Organization. All rights reserved.
             </p>
