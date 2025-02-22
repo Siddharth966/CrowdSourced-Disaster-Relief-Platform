@@ -1,11 +1,9 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { commonClasses } from "../constants/styleClass";
 import { registerFields } from "../constants/forms";
 import { baseUrl } from "../constants/env";
-import { toast } from "react-toastify";
-
 
 const Register = () => {
   const navigate = useNavigate();
@@ -16,7 +14,6 @@ const Register = () => {
   }, {});
 
   const [formData, setFormData] = useState(initialFormState);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -24,25 +21,26 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${baseUrl}/register`,
-        formData
-      );
-      if(response.status===201){
-        toast.success(response.data.message)
+      const response = await axios.post(`${baseUrl}/register`, formData);
+      if (response.status === 201) {
+        toast.success(response.data.message);
         navigate("/login");
-      }else if(response.status!==200){
-        toast.error(response.data.message)
+      } else if (response.status !== 200) {
+        toast.error(response.data.message);
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Error registering volunteer");
+      toast.error(
+        error.response?.data?.message || "Error registering volunteer"
+      );
     }
   };
 
   const renderFormField = (field) => {
     return (
-      <div key={field.name} className="flex items-center justify-between w-full space-x-8">
-      
+      <div
+        key={field.name}
+        className="flex items-center justify-between w-full space-x-8"
+      >
         <label htmlFor={field.name} className="w-1/3 text-gray-700 font-medium">
           {field.label}
         </label>
@@ -76,7 +74,6 @@ const Register = () => {
       </div>
     );
   };
-  
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
