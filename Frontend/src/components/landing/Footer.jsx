@@ -3,30 +3,44 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8 mt-8">
-      <div className="max-w-screen-lg mx-auto text-center">
-        <p className="text-lg font-semibold">
-          Together, We Can Make a Difference
-        </p>
-        <p className="mt-4 text-base">
-          Volunteer to help communities rebuild after disasters. Your
-          contribution, no matter how small, can bring hope and relief to those
-          in need.
-        </p>
-        <div className="mt-6">
-          <a
-            href="#volunteer"
-            className="text-blue-400 hover:text-blue-500 text-lg font-medium"
-          >
-            Join Us as a Volunteer
-          </a>
-        </div>
-        <div className="mt-4">
-          <p className="text-base">
-            call us at <span className="text-blue-400">(123) 456-7890</span>
+      <div className="bg-gray-100 py-8 mt-8">
+        <div className="max-w-screen-lg mx-auto text-center">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+            How Our Website Works
+          </h2>
+          <p className="text-lg text-gray-600">
+            Our website is designed to connect volunteers with communities in
+            need. Here's how it works:
           </p>
-          <p className="text-sm">
-            © 2025 Disaster Relief Organization. All rights reserved.
-          </p>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                1. Sign Up
+              </h3>
+              <p className="text-gray-600">
+                Create an account to join our network of volunteers. It's quick
+                and easy!
+              </p>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                2. Find Opportunities
+              </h3>
+              <p className="text-gray-600">
+                Browse through various volunteering opportunities and choose the
+                one that suits you best.
+              </p>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                3. Make an Impact
+              </h3>
+              <p className="text-gray-600">
+                Get involved, contribute your time and skills, and make a real
+                difference in people's lives.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
