@@ -1,8 +1,9 @@
 import React from "react";
+import { getPhotoUrl } from "../../service/imageService.js";
 
-const ComplaintDetails = ({ isModalOpen, selectedComplaint, closeModal }) => {
+const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
   // If modal is not open, return null to prevent rendering
-  if (!isModalOpen || !selectedComplaint) return null;
+  if (!isModalOpen || !item) return null;
 
   return (
     <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center z-50">
@@ -11,31 +12,29 @@ const ComplaintDetails = ({ isModalOpen, selectedComplaint, closeModal }) => {
         <div className="mt-4">
           <div className="mt-4">
             <h4 className="text-gray-500">Photos</h4>
-            {selectedComplaint.photos && selectedComplaint.photos.length > 0 ? (
-              <img
-                src={selectedComplaint.photos[0]} // Assuming you want to show the first image
-                alt="Complaint photo"
-                className="w-full h-32 object-cover rounded-md"
-              />
-            ) : (
-              <p>No photos available</p>
-            )}
+            <div className="space-y-2">
+              {item.photos.map((photo, index) => (
+                <img
+                  key={index}
+                  src={getPhotoUrl(photo)} // Use the service to get the photo URL
+                  alt={`Complaint photo ${index + 1}`}
+                  className="w-full h-32 object-cover rounded-md"
+                />
+              ))}
+            </div>
           </div>
           <p>
-            <strong>Severity:</strong> {selectedComplaint.severity}
+            <strong>Severity:</strong> {item.severity}
+          </p>
+
+          <p>
+            <strong>Address:</strong> {item.address}
           </p>
           <p>
-            <strong>Urgency:</strong> {selectedComplaint.urgency}
+            <strong>Landmark:</strong> {item.landmark}
           </p>
           <p>
-            <strong>Address:</strong> {selectedComplaint.address}
-          </p>
-          <p>
-            <strong>Landmark:</strong> {selectedComplaint.landmark}
-          </p>
-          <p>
-            <strong>Damage Description:</strong>{" "}
-            {selectedComplaint.damageDesc || "NA"}
+            <strong>Damage Description:</strong> {item.damageDesc || "NA"}
           </p>
 
           <div className="mt-4 flex justify-end">

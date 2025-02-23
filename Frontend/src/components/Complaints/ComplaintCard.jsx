@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  btnClass,
-  colorPipeSeverity,
-  colorPipeUrgency,
-} from "../../constants/styleClass";
+import { colorPipeSeverity } from "../../constants/styleClass";
 import ComplaintDetails from "./ComplaintDetails";
 
 const ComplaintCard = ({ items }) => {
@@ -64,7 +60,7 @@ const ComplaintCard = ({ items }) => {
       {/* ComplaintDetails modal */}
       <ComplaintDetails
         isModalOpen={isModalOpen}
-        selectedComplaint={selectedComplaint}
+        item={selectedComplaint}
         closeModal={closeModal} // Function to close the modal
       />
     </div>
