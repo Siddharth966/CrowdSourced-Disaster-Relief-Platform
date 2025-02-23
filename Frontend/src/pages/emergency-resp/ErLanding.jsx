@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import UserNavbar from "../../components/userNavbar";
 import { getDetails } from "../../service/userService";
 import { useParams } from "react-router-dom";
 import { getComplaints } from "../../service/complaintService";
 import "../../style/style.css";
-import ComplaintCard from "../../components/volunteer/ComplaintCard";
+import ComplaintCard from "../../components/Complaints/ComplaintCard";
+import UserNavbar from "../../components/UserNavbar";
 
 const ErLanding = () => {
   const [details, setDetails] = useState(null);
@@ -37,12 +37,12 @@ const ErLanding = () => {
 
   return (
     <div>
-    <UserNavbar fullName={details?.fullName} isVolunteer={true} />
-    <div className="herosection h-96"></div>
-    <div className="h-96">
-      <ComplaintCard items={complaints} />
+      <UserNavbar fullName={details?.fullName} isVolunteer={true} />
+      <div className="herosection h-96"></div>
+      <div className="h-96">
+        <ComplaintCard items={complaints} />
+      </div>
     </div>
-  </div>
   );
 };
 

@@ -1,0 +1,38 @@
+/* ComplaintCard.css */
+.complaint-card {
+  background: linear-gradient(
+    to bottom right,
+    #2c5282,
+    #1a365d
+  ); /* from-blue-800 to-blue-900 */
+  color: white;
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+  transition: box-shadow 0.3s ease; /* transition-shadow duration-300 */
+  overflow: hidden; /* overflow-hidden */
+}
+
+.complaint-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.5); /* hover:shadow-blue-500/50 */
+}
+
+.complaint-card-button {
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    #48bb78,
+    #38a169
+  ); /* from-green-400 to-green-500 */
+  color: white;
+  font-weight: 600; /* font-semibold */
+  padding: 0.5rem 0; /* py-2 */
+  transition: background 0.3s ease; /* transition-all duration-300 */
+}
+
+.complaint-card-button:hover {
+  background: linear-gradient(
+    to right,
+    #38a169,
+    #2f855a
+  ); /* hover:from-green-500 hover:to-green-600 */
+}
