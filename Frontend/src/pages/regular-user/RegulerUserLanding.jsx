@@ -10,6 +10,7 @@ const RegulerUserLanding = () => {
   const [details, setDetails] = useState(null);
   const [complaints, setComplaints] = useState(null);
   const { id } = useParams();
+  
   useEffect(() => {
     const fetchDetails = async () => {
       try {

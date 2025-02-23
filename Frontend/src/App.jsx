@@ -7,6 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import RegulerUserLanding from "./pages/regular-user/RegulerUserLanding";
 import ComplaintForm from "./components/regular-user/ComplaintForm";
 import PrivateRoute from "./components/PrivateRoute";
+import VolunteerLanding from "./pages/volunteer/VolunteerLanding";
+import ErLanding from "./pages/emergency-resp/ErLanding";
+
 function App() {
   return (
     <>
@@ -33,7 +36,13 @@ function App() {
             path="/regular-user/:id/complaint"
             element={<ComplaintForm />}
           />
+
+         <Route path="/volunteer/:id" element={<VolunteerLanding />} />
+
+         <Route path="/emergency-resp/:id" element={<ErLanding />} />
+        
         </Routes>
+
       </Router>
     </>
   );
