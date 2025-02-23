@@ -23,7 +23,7 @@ const UserNavbar = ({ fullName, isRegularUser }) => {
   };
 
   return (
-    <nav className="bg-blue-600 p-5 shadow-lg flex justify-between items-center">
+    <nav className="bg-blue-950 p-5 shadow-lg flex justify-between items-center">
       {/* Logo or Brand Name */}
       <Link to="/" className="text-white text-2xl font-bold">
         ReliefConnect

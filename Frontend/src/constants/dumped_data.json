@@ -1,0 +1,47 @@
+[
+    {
+        "_id": "67b104bfa3f1f9490dabc983",
+        "address": "Karve Nagar",
+        "landmark": "Mane mess",
+        "severity": "Minor",
+        "urgency": "High",
+        "damageDesc": "The Dog has lied down Unconscious",
+        "photos": [
+            "photo1.jpg",
+            "photo2.jpg",
+            "photo3.jpg"
+        ],
+        "createdAt": "2025-02-15T21:18:55.166+00:00",
+        "updatedAt": "2025-02-15T21:18:55.166+00:00"
+    },
+    {
+        "_id": "67b104bfa3f1f9490dabc984",
+        "address": "MG Road",
+        "landmark": "City Mall",
+        "severity": "Major",
+        "urgency": "Critical",
+        "damageDesc": "Car accident involving multiple vehicles",
+        "photos": [
+            "accident1.jpg",
+            "accident2.jpg",
+            "accident3.jpg"
+        ],
+        "createdAt": "2025-02-16T10:30:00.000+00:00",
+        "updatedAt": "2025-02-16T10:30:00.000+00:00"
+    },
+    {
+        "_id": "67b104bfa3f1f9490dabc985",
+        "address": "Park Street",
+        "landmark": "Central Park",
+        "severity": "Moderate",
+        "urgency": "Medium",
+        "damageDesc": "Tree fallen blocking the main road",
+        "photos": [
+            "tree1.jpg",
+            "tree2.jpg",
+            "tree3.jpg"
+        ],
+        "createdAt": "2025-02-17T14:45:30.000+00:00",
+        "updatedAt": "2025-02-17T14:45:30.000+00:00"
+    }
+]

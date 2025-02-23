@@ -17,7 +17,8 @@ const LandingDesign = () => {
   return (
     <div className="h-screen ">
       <div
-        className="w-full h-3/4 bg-cover bg-center shadow-lg"
+        className="w-full h-15/16 bg-cover bg-center shadow-lg"
+      
         style={{ backgroundImage: `url(${images[currentIndex]})` }}
       ></div>
 

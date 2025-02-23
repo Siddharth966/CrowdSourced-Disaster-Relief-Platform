@@ -16,6 +16,7 @@ export const createComplaint = async (req, res) => {
       urgency,
       damageDesc,
       photos,
+      status,
     };
 
     // Save complaint to the database
@@ -36,7 +37,7 @@ export const createComplaint = async (req, res) => {
 
 export const getComplaints = async (req, res) => {
   try {
-    const result = await regularUserService.getAll(Complaint, req.body);
+    const result = await regularUserService.getAll(Complaint);
     res.status(200).json({
       message: result.message,
       data: result.data,
