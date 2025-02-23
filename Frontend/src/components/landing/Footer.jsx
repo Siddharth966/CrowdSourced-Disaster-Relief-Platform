@@ -43,6 +43,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
+       {/* Copyright Section */}
+       <div className="text-center border-t border-gray-700 py-4 mt-8">
+        <p className="text-gray-400">&copy; {new Date().getFullYear()} Volunteer Connect. All rights reserved.</p>
+      </div>
     </footer>
   );
 };
