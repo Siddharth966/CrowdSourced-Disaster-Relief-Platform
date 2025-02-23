@@ -28,30 +28,27 @@ const ComplaintCard = ({ items }) => {
         items.map((item) => (
           <div
             key={item._id}
-            className="w-64 bg-blue-100 rounded-md text-center pl-2 pr-2 flex flex-col justify-between"
+            className="w-64 bg-blue-900 text-white rounded-md  pl-2 pr-2 flex flex-col justify-between"
             // Set a minimum height for uniform cards
           >
             <div className="space-y-2 mt-2">
               <div
-                className="uppercase"
+                className="uppercase p-2"
                 style={colorPipeSeverity(item.severity)}
               >
                 {item.severity}
               </div>
-              <div className="uppercase" style={colorPipeUrgency(item.urgency)}>
-                {item.urgency}
-              </div>
             </div>
 
-            <div className="space-y-2 mt-2">
+            <div className="">
               <div className="">
-                <h4 className="text-gray-500">Address</h4>
+                <h4 className="text-gray-400">Address</h4>
                 <p>{item.address}</p>
                 <p>{item.landmark || "NA"}</p>
               </div>
 
               <div>
-                <h4 className="text-gray-500">Damage</h4>
+                <h4 className="text-gray-400">Damage</h4>
                 <p>{item.damageDesc || "NA"}</p>
                 <button
                   onClick={() => modalAction(item)} // Pass the current item to the modalAction

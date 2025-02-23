@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 // Define the Complaint Schema
 const complaintSchema = new mongoose.Schema(
   {
@@ -35,6 +36,11 @@ const complaintSchema = new mongoose.Schema(
     photos: {
       type: [String], // Array of base64 strings (or paths to images if you save the files on disk)
       required: true,
+    },
+    status: {
+      type: String,
+      enum: ["Pending", "In Progress", "Done"], // Status options
+      default: "Pending", // Default status when a complaint is created
     },
   },
   {

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import UserNavbar from "../../components/userNavbar";
 import { getDetails } from "../../service/userService";
+
 import { useParams } from "react-router-dom";
-import ComplaintCard from "../../components/regular-user/ComplaintCard";
 import "../../style/style.css";
 import { getComplaints } from "../../service/complaintService";
+import UserNavbar from "../../components/UserNavbar";
+import ComplaintCard from "../../components/Complaints/ComplaintCard";
 
 const RegulerUserLanding = () => {
   const [details, setDetails] = useState(null);
   const [complaints, setComplaints] = useState(null);
   const { id } = useParams();
-  
+
   useEffect(() => {
     const fetchDetails = async () => {
       try {
