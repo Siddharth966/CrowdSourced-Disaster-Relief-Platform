@@ -27,6 +27,9 @@ const Navbar = () => {
           <li>
             <Link className="text-white hover:text-blue-200">Donate</Link>
           </li>
+          <li>
+            <Link to ="/about" className="text-white hover:text-blue-200">About Us</Link>
+          </li>
         </ul>
 
         {/* Register Button */}
@@ -43,6 +46,7 @@ const Navbar = () => {
           >
             Login
           </Link>
+         
         </div>
       </div>
     </nav>
