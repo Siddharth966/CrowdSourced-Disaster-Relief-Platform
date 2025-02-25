@@ -1,5 +1,5 @@
 import { Complaint } from "../models/Complaint.js";
-import { regularUserService } from "../services/regularUserService.js";
+import { commanService } from "../services/commanService.js";
 
 export const createComplaint = async (req, res) => {
   try {
@@ -20,7 +20,7 @@ export const createComplaint = async (req, res) => {
     };
 
     // Save complaint to the database
-    const result = await regularUserService.create(Complaint, payload);
+    const result = await commanService.create(Complaint, payload);
 
     // Send success response
     res.status(201).json({ message: result.message, data: result.data });
@@ -37,7 +37,26 @@ export const createComplaint = async (req, res) => {
 
 export const getComplaints = async (req, res) => {
   try {
-    const result = await regularUserService.getAll(Complaint);
+    const { status, limit } = req.query;
+
+    const limitNumber = parseInt(limit) || 10;
+    let filter = {};
+    if (status) {
+      // If status is an array, use the $in operator
+      if (Array.isArray(status)) {
+        filter.status = { $in: status };
+      } else {
+        // If status is a single value, filter by that value
+        filter.status = status;
+      }
+    }
+    const totalItems = await Complaint.countDocuments(filter);
+
+    const result = await commanService.getAll(Complaint, {
+      limitNumber,
+      filter,
+      totalItems,
+    });
     res.status(200).json({
       message: result.message,
       data: result.data,
@@ -53,7 +72,7 @@ export const getComplaints = async (req, res) => {
 export const getComplaintById = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await regularUserService.getItemById(Complaint, id);
+    const result = await commanService.getItemById(Complaint, id);
     res.status(201).json({
       message: result.message,
       data: result.data,
@@ -71,7 +90,7 @@ export const deleteComplaint = async (req, res) => {
     const { id } = req.params;
 
     // Step 1: Fetch the complaint by its ID
-    const complaint = await regularUserService.getItemById(Complaint, id);
+    const complaint = await commanService.getItemById(Complaint, id);
 
     if (!complaint) {
       return res.status(404).json({ message: "Complaint not found" });
