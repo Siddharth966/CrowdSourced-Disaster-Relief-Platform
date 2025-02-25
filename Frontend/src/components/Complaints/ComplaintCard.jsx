@@ -59,6 +59,7 @@ const ComplaintCard = ({ items }) => {
 
       {/* ComplaintDetails modal */}
       <ComplaintDetails
+        isRegularUser={true}
         isModalOpen={isModalOpen}
         item={selectedComplaint}
         closeModal={closeModal} // Function to close the modal

@@ -3,10 +3,14 @@ import { baseUrl } from "../constants/env";
 
 export const getComplaints = async (status, limit) => {
   try {
+    // Construct params object conditionally
+    const params = {};
+    if (status) params.status = status;
+    if (limit) params.limit = limit;
+
     const response = await axios.get(`${baseUrl}/complaints`, {
-      params: { status, limit }, // Pass status (array) and limit as query parameters
+      params: Object.keys(params).length ? params : undefined, // Only send params if they exist
       paramsSerializer: (params) => {
-        // Serialize the array of statuses into a query string
         return Object.keys(params)
           .map((key) => {
             if (Array.isArray(params[key])) {
@@ -17,6 +21,7 @@ export const getComplaints = async (status, limit) => {
           .join("&");
       },
     });
+
     return response.data;
   } catch (error) {
     console.error("Error fetching complaints:", error);

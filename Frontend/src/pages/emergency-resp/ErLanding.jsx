@@ -26,7 +26,7 @@ const ErLanding = () => {
   useEffect(() => {
     const fetchComplaint = async () => {
       try {
-        const response = await getComplaints();
+        const response = await getComplaints(["Pending"], 5);
         setComplaints(response.data);
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -40,6 +40,7 @@ const ErLanding = () => {
       <UserNavbar fullName={details?.fullName} isVolunteer={true} />
       <div className="herosection h-96"></div>
       <div className="h-96">
+        <h3 className="header ml-8 text-2xl">Pending Complaints...</h3>
         <ComplaintCard items={complaints} />
       </div>
     </div>
