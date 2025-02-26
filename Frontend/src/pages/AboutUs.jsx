@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"; // Import Link for navigation
 
 export default function AboutUs() {
   return (
+
+   
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6 relative">
       {/* Back to Home Button */}
       <Link
