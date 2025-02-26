@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { colorPipeSeverity } from "../../constants/styleClass";
 import ComplaintDetails from "./ComplaintDetails";
 
-const ComplaintCard = ({ items }) => {
+const ComplaintCard = ({ items,isRegularUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const [selectedComplaint, setSelectedComplaint] = useState(null); // State to store the selected complaint
 
@@ -19,7 +19,7 @@ const ComplaintCard = ({ items }) => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 p-2 justify-center">
+    <div className="flex flex-wrap gap-12 p-2 justify-center">
       {items &&
         items.map((item) => (
           <div
@@ -59,7 +59,7 @@ const ComplaintCard = ({ items }) => {
 
       {/* ComplaintDetails modal */}
       <ComplaintDetails
-        isRegularUser={true}
+        isRegularUser={isRegularUser}
         isModalOpen={isModalOpen}
         item={selectedComplaint}
         closeModal={closeModal} // Function to close the modal
