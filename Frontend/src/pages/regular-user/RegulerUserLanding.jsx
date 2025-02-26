@@ -27,7 +27,7 @@ const RegulerUserLanding = () => {
   useEffect(() => {
     const fetchComplaint = async () => {
       try {
-        const response = await getComplaints(["In Progress", "Pending"], 5);
+        const response = await getComplaints(["Pending"]);
         setComplaints(response.data);
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -40,6 +40,8 @@ const RegulerUserLanding = () => {
       <UserNavbar fullName={details?.fullName} isRegularUser={true} />
       <div className="herosection h-96"></div>
       <div className="h-96">
+        <h3 className="header ml-8 text-2xl">Pending Complaints...</h3>
+
         <ComplaintCard items={complaints} />
       </div>
     </div>

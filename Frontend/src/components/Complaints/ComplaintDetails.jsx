@@ -14,7 +14,6 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
       const response = await axios.put(`${baseUrl}/complaint/status/${id}`, {
         status: "In Progress", // Example status update
       });
-      console.log("response", response);
 
       if (response.status === 200) {
         toast.success("Complaint Accepted Successfully"); // Show success message
@@ -26,7 +25,7 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-opacity-50 backdrop-blur-lg flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-md w-96">
         <h2 className="text-xl font-semibold">Complaint Details</h2>
         <div className="mt-4">
@@ -58,12 +57,14 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
           </p>
 
           <div className="mt-4 flex justify-between">
-            <button
-              onClick={handleSubmit} // Close the modal when clicked
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-            >
-              Accept
-            </button>
+            {!isRegularUser && (
+              <button
+                onClick={handleSubmit} // Close the modal when clicked
+                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+              >
+                Accept
+              </button>
+            )}
             <button
               onClick={closeModal} // Close the modal when clicked
               className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
