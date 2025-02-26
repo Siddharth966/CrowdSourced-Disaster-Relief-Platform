@@ -1,6 +1,7 @@
 import { FaHandsHelping, FaGlobeAsia, FaUsers } from "react-icons/fa";
 import MotionCard from "../components/shared/MotionCard";
 
+
 const cardData = [
   {
     icon: <FaHandsHelping />,
@@ -21,6 +22,7 @@ const cardData = [
       "By crowdsourcing help, resources, and expertise, we empower communities to take charge in times of disaster.",
   },
 ];
+
 
 const AboutUs = () => {
   return (

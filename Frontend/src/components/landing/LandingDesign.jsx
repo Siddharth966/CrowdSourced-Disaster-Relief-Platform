@@ -56,7 +56,6 @@ const LandingDesign = () => {
         alt="Static Display"
         className="w-full mt-4 shadow-md"
       />
-
       <Footer />
     </div>
   );
