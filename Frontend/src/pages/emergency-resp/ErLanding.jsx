@@ -5,6 +5,7 @@ import { getComplaints } from "../../service/complaintService";
 import "../../style/style.css";
 import ComplaintCard from "../../components/Complaints/ComplaintCard";
 import UserNavbar from "../../components/UserNavbar";
+import Banner from "../../components/shared/Banner";
 
 const ErLanding = () => {
   const [details, setDetails] = useState(null);
@@ -38,9 +39,15 @@ const ErLanding = () => {
   return (
     <div>
       <UserNavbar fullName={details?.fullName} isVolunteer={true} />
-      <div className="herosection h-96"></div>
-      <div className="h-96">
-        <h3 className="header ml-8 text-2xl">Pending Complaints...</h3>
+
+      <Banner title="Emergency Responder" description="Emergency responders are trained professionals and volunteers who provide immediate assistance during disasters and crises.
+      Emergency responders, including paramedics, firefighters, police officers, and trained volunteers, play a crucial role in saving lives and restoring stability during and after disasters" />
+
+
+
+      {/* <div className="herosection h-96"></div> */}
+      <div className="h-150 bg-blue-300">
+        <h3 className="header ml-3 pt-6 text-2xl">Pending Complaints...</h3>
         <ComplaintCard items={complaints} />
       </div>
     </div>
