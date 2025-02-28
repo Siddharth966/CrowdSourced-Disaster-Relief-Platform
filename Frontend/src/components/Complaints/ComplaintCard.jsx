@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { colorPipeSeverity } from "../../constants/styleClass";
 import ComplaintDetails from "./ComplaintDetails";
 
-const ComplaintCard = ({ items,isRegularUser }) => {
+const ComplaintCard = ({ items, isRegularUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const [selectedComplaint, setSelectedComplaint] = useState(null); // State to store the selected complaint
 
@@ -19,13 +19,13 @@ const ComplaintCard = ({ items,isRegularUser }) => {
   };
 
   return (
-    <div className="flex flex-wrap gap-12 p-2 justify-center">
+    <div className="flex flex-wrap gap-4 p-2 justify-center">
       {items &&
         items.map((item) => (
           <div
             key={item._id}
             className="w-64 bg-blue-900 text-white rounded-md  pl-2 pr-2 flex flex-col justify-between"
-            // Set a minimum height for uniform cards
+            // Set a minimum height f`or uniform cards
           >
             <div className="space-y-2 mt-2">
               <div
