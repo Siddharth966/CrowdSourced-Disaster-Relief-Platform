@@ -40,7 +40,7 @@ const RegulerUserLanding = () => {
     fetchComplaint();
   }, []);
   return (
-    <div className="p">
+    <div>
       <UserNavbar fullName={details?.fullName} isRegularUser={true} />
      
         <Banner title="User" description="The responsibilities of an Indian citizen are outlined in Article 51A of the Indian Constitution as Fundamental Duties. These duties encourage every citizen to contribute to the nation's well-being and development." />
