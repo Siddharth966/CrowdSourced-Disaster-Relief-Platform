@@ -19,13 +19,13 @@ const ComplaintCard = ({ items, isRegularUser }) => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 p-2 justify-center">
+    <div className="flex flex-wrap gap-6 p-2 justify-center">
       {items &&
         items.map((item) => (
           <div
             key={item._id}
             className="w-64 bg-blue-900 text-white rounded-md  pl-2 pr-2 flex flex-col justify-between"
-            // Set a minimum height f`or uniform cards
+            // Set a minimum height for uniform cards
           >
             <div className="space-y-2 mt-2">
               <div
