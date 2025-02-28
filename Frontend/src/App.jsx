@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import VolunteerLanding from "./pages/volunteer/VolunteerLanding";
 import ErLanding from "./pages/emergency-resp/ErLanding";
 import AboutUs from "./pages/AboutUs";
+import AllComplaint from "./pages/complaints/AllComplaint";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
@@ -43,6 +44,7 @@ function App() {
             />
             <Route path="/volunteer/:id" element={<VolunteerLanding />} />
             <Route path="/er/:id" element={<ErLanding />} />
+            <Route path="/view-complaints" element={<AllComplaint />} />
           </Route>
         </Routes>
       </Router>
