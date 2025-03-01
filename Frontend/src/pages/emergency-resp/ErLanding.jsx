@@ -42,9 +42,7 @@ const ErLanding = () => {
 
       <Banner title="Emergency Responder" description="Emergency responders are trained professionals and volunteers who provide immediate assistance during disasters and crises.
       Emergency responders, including paramedics, firefighters, police officers, and trained volunteers, play a crucial role in saving lives and restoring stability during and after disasters" />
-
-
-
+      
       {/* <div className="herosection h-96"></div> */}
       <div className="h-150 bg-blue-300">
         <h3 className="header ml-3 pt-6 text-2xl">Pending Complaints...</h3>
@@ -55,3 +53,4 @@ const ErLanding = () => {
 };
 
 export default ErLanding;
+  
