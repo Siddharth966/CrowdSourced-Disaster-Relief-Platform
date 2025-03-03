@@ -131,17 +131,7 @@ export const complaintFields = [
     accept: "image/*",
     required: true,
   },
-  {
-    name: "urgency",
-    type: "radio",
-    label: "Urgency",
-    options: [
-      { value: "Low", label: "Low" },
-      { value: "Medium", label: "Medium" },
-      { value: "High", label: "High" },
-    ],
-    required: true,
-  },
+
   {
     name: "damageDesc",
     type: "textarea",

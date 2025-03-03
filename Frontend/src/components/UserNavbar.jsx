@@ -23,13 +23,13 @@ const UserNavbar = ({ fullName, isRegularUser }) => {
   };
 
   return (
-    <nav className="bg-blue-950 p-5 shadow-lg flex justify-between items-center">
+    <nav className="text-[#616161]  p-5 shadow-lg flex justify-between items-center">
       {/* Logo or Brand Name */}
-      <Link to="/" className="text-white text-2xl font-bold">
+      <Link to="/" className="text-2xl font-bold">
         ReliefConnect
       </Link>
 
-      <div className="flex items-center space-x-6">
+      <div className="bg-[#ffffff] flex items-center space-x-6">
         {/* Conditionally render the "Raise Complaint" button */}
         {isRegularUser && (
           <button onClick={() => handleAction("add")} className={btnClass}>
@@ -39,7 +39,7 @@ const UserNavbar = ({ fullName, isRegularUser }) => {
 
         {/* Greeting and Logout Button */}
         <div className="flex items-center space-x-4">
-          <span className="text-white font-medium">{`Hi, ${
+          <span className="font-medium">{`Hi, ${
             fullName || "Guest"
           }`}</span>
           <button

@@ -45,12 +45,12 @@ const RegulerUserLanding = () => {
      
         <Banner title="User" description="The responsibilities of an Indian citizen are outlined in Article 51A of the Indian Constitution as Fundamental Duties. These duties encourage every citizen to contribute to the nation's well-being and development." />
       
-      <div className="h-96 bg-blue-300">
+      <div className="h-96 bg-[#f2f3f7]">
         <h3 className="header ml-3 pt-6 text-2xl">Pending Complaints...</h3>
 
         <ComplaintCard isRegularUser={true} items={pendingComplaints} />
       </div> 
-      <div className="h-96 bg-blue-400">
+      <div className="h-96 bg-[#ffffff]">
         <h3 className="header ml-3 pt-6 text-2xl">In Progress Complaints...</h3>
 
         <ComplaintCard isRegularUser={true} items={complaints} />

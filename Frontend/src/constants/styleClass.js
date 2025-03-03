@@ -7,11 +7,11 @@ export const btnClass =
 export const colorPipeSeverity = (level) => {
   switch (level) {
     case "Moderate":
-      return { backgroundColor: "yellow", color: "black" };
+      return { backgroundColor: "#9E9E9E ", color: "white" };
     case "Minor":
-      return { backgroundColor: "purple", color: "white" };
+      return { backgroundColor: "#BDBDBD  ", color: "white" };
     case "Critical":
-      return { backgroundColor: "red", color: "white" };
+      return { backgroundColor: "#757575 ", color: "white" };
     default:
       return {};
   }
