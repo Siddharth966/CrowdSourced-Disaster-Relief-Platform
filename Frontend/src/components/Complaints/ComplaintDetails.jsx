@@ -5,7 +5,6 @@ import { baseUrl } from "./../../constants/env";
 import { toast, ToastContainer } from "react-toastify";
 
 const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
-  console.log('item',item)
   // If modal is not open, return null to prevent rendering
   if (!isModalOpen || !item) return null;
 
