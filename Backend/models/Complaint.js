@@ -24,11 +24,7 @@ const complaintSchema = new mongoose.Schema(
       enum: ["Minor", "Moderate", "Critical"], // Ensure that severity is one of these values
       required: true,
     },
-    urgency: {
-      type: String,
-      enum: ["Low", "Medium", "High"], // Ensure th\at urgency is one of these values
-      required: true,
-    },
+  
     damageDesc: {
       type: String,
       required: false, // Optional field

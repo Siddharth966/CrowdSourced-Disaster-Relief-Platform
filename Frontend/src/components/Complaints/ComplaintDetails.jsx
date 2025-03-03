@@ -5,6 +5,7 @@ import { baseUrl } from "./../../constants/env";
 import { toast, ToastContainer } from "react-toastify";
 
 const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
+  console.log('item',item)
   // If modal is not open, return null to prevent rendering
   if (!isModalOpen || !item) return null;
 
@@ -23,6 +24,10 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
       toast.error(error.response.data.message);
     }
   };
+  const onPhotoClick = (photoUrl) => {
+    window.open(photoUrl, "_blank");
+  };
+  
 
   return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-lg flex items-center justify-center z-50">
@@ -37,6 +42,7 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
                   key={index}
                   src={getPhotoUrl(photo)} // Use the service to get the photo URL
                   alt={`Complaint photo ${index + 1}`}
+                  onClick={()=>onPhotoClick(getPhotoUrl(photo))}
                   className="w-full h-32 object-cover rounded-md"
                 />
               ))}

@@ -24,7 +24,8 @@ const ComplaintCard = ({ items, isRegularUser }) => {
         items.map((item) => (
           <div
             key={item._id}
-            className="w-64 bg-blue-900 text-white rounded-md  pl-2 pr-2 flex flex-col justify-between"
+            className="w-64 bg-gradient-to-tr from-[#918e91] to-[#ffffff]
+ text-white rounded-md  pl-2 pr-2 flex flex-col justify-between"
             // Set a minimum height for uniform cards
           >
             <div className="space-y-2 mt-2">
@@ -48,7 +49,7 @@ const ComplaintCard = ({ items, isRegularUser }) => {
                 <p>{item.damageDesc || "NA"}</p>
                 <button
                   onClick={() => modalAction(item)} // Pass the current item to the modalAction
-                  className="bg-green-500 text-white mb-3 px-4 py-2 w-full hover:bg-green-600 cursor-pointer"
+                  className="bg-[#c6c6c6] text-white mb-3 px-4 py-2 w-full hover:bg-green-600 cursor-pointer"
                 >
                   View Details
                 </button>
