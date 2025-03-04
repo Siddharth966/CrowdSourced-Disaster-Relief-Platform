@@ -140,3 +140,35 @@ export const complaintFields = [
     required: false,
   },
 ];
+
+export const contactFields = [
+  {
+    name: "name",
+    type: "text",
+    label: "Your Name",
+    placeholder: "Enter your name",
+    required: true,
+  },
+  {
+    name: "email",
+    type: "email",
+    label: "Email Address",
+    placeholder: "Enter your email",
+    required: true,
+  },
+  {
+    name: "subject",
+    type: "text",
+    label: "Subject",
+    placeholder: "Enter subject",
+    required: true,
+  },
+  {
+    name: "message",
+    type: "textarea",
+    label: "Message",
+    placeholder: "Write your message here...",
+    required: true,
+  },
+];
+

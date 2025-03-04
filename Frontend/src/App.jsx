@@ -11,6 +11,7 @@ import VolunteerLanding from "./pages/volunteer/VolunteerLanding";
 import ErLanding from "./pages/emergency-resp/ErLanding";
 import AboutUs from "./pages/AboutUs";
 import AllComplaint from "./pages/complaints/AllComplaint";
+import Contact_Us from "./pages/Contact_Us";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
@@ -19,7 +20,7 @@ function App() {
       <Router>
         <ToastContainer
           position="top-right"
-          autoClose={1000}
+          autoClose={2000}
           hideProgressBar={true}
           newestOnTop={false}
           closeOnClick
@@ -33,6 +34,7 @@ function App() {
 
 
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact_Us />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
 
