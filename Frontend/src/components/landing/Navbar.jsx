@@ -30,6 +30,9 @@ const Navbar = () => {
           <li>
             <Link to ="/about" className="text-white hover:text-blue-200">About Us</Link>
           </li>
+          <li>
+            <Link to ="/contact" className="text-white hover:text-blue-200">Contact</Link>
+          </li>
         </ul>
 
         {/* Register Button */}

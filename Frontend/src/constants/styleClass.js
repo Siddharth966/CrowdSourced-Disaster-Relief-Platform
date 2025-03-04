@@ -2,7 +2,9 @@ export const commonClasses =
   "w-full p-1 pl-3 border border-gray-300 rounded-sm";
 
 export const btnClass =
-  "bg-green-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2";
+  "w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300";
+
+  export const inputField = "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
 
 export const colorPipeSeverity = (level) => {
   switch (level) {
