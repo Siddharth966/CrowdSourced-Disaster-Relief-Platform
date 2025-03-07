@@ -8,18 +8,42 @@ import { baseUrl } from "../constants/env";
 const Register = () => {
   const navigate = useNavigate();
 
+  // Initialize form state
   const initialFormState = registerFields.reduce((acc, field) => {
     acc[field.name] = "";
     return acc;
   }, {});
 
   const [formData, setFormData] = useState(initialFormState);
+  const [phoneError, setPhoneError] = useState(""); // State for phone number validation error
+
+  // Handle input change
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Real-time phone number validation
+    if (name === "phone") {
+      if (value.length > 10) {
+        setPhoneError("Phone number cannot exceed 10 digits.");
+      } else if (!/^\d*$/.test(value)) {
+        setPhoneError("Phone number must contain only digits.");
+      } else {
+        setPhoneError("");
+      }
+    }
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate phone number before submission
+    if (formData.phone.length !== 10) {
+      toast.error("Phone number must be exactly 10 digits.");
+      return;
+    }
+
     try {
       const response = await axios.post(`${baseUrl}/register`, formData);
       if (response.status === 201) {
@@ -35,6 +59,7 @@ const Register = () => {
     }
   };
 
+  // Render form fields dynamically
   const renderFormField = (field) => {
     return (
       <div
@@ -60,15 +85,21 @@ const Register = () => {
               ))}
             </select>
           ) : (
-            <input
-              type={field.type}
-              name={field.name}
-              value={formData[field.name]}
-              onChange={handleChange}
-              placeholder={field.placeholder}
-              required={field.required}
-              className="w-full p-2 border border-gray-300 rounded-lg"
-            />
+            <div>
+              <input
+                type={field.type}
+                name={field.name}
+                value={formData[field.name]}
+                onChange={handleChange}
+                placeholder={field.placeholder}
+                required={field.required}
+                className="w-full p-2 border border-gray-300 rounded-lg"
+                maxLength={field.name === "phone" ? 10 : undefined} // Limit phone number to 10 digits
+              />
+              {field.name === "phone" && phoneError && (
+                <p className="text-red-500 text-sm mt-1">{phoneError}</p>
+              )}
+            </div>
           )}
         </div>
       </div>
