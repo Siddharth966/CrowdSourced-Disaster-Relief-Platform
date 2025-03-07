@@ -1,4 +1,5 @@
 import React from "react";
+import AddComplaint from "./AddComplaint";
 
 const Footer = () => {
   return (
@@ -40,6 +41,9 @@ const Footer = () => {
                 difference in people's lives.
               </p>
             </div>
+            
+      <AddComplaint/>
+
           </div>
         </div>
       </div>
