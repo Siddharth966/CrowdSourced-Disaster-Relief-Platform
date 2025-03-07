@@ -12,6 +12,10 @@ import ErLanding from "./pages/emergency-resp/ErLanding";
 import AboutUs from "./pages/AboutUs";
 import AllComplaint from "./pages/complaints/AllComplaint";
 import Contact_Us from "./pages/Contact_Us";
+import VolPendingComplaint from "./pages/volunteer/VolPendingComplaint";
+import VolInProgressComplaint from "./pages/volunteer/VolInProgressComplaint";
+import ErPendingComplaints from "./pages/emergency-resp/ErPendingComplaints";
+import ErInProgressComplaints from "./pages/emergency-resp/ErInProgressComplaints";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
@@ -32,7 +36,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
 
-
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact_Us />} />
           <Route path="/register" element={<Register />} />
@@ -48,6 +51,23 @@ function App() {
             <Route path="/er/:id" element={<ErLanding />} />
             <Route path="/view-complaints" element={<AllComplaint />} />
           </Route>
+          <Route
+            path="/volunteer/:id/pending-complaint"
+            element={<VolPendingComplaint />}
+          />
+          <Route
+            path="/volunteer/:id/inprogress-complaint"
+            element={<VolInProgressComplaint />}
+          />
+
+          <Route
+            path="/ErLanding/:id/pending-complaint"
+            element={<ErPendingComplaints />}
+          />
+          <Route
+            path="/ErLanding/:id/inprogress-complaint"
+            element={<ErInProgressComplaints />}
+          />
         </Routes>
       </Router>
     </>
