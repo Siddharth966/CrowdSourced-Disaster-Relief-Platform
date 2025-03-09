@@ -172,3 +172,12 @@ export const contactFields = [
   },
 ];
 
+export const adminLogin = [
+  {
+    name: "secret_key",
+    type: "text",
+    label: "Secret Key",
+    placeholder: "Enter Secret Key",
+    required: true,
+  },
+];

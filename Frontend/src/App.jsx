@@ -16,6 +16,11 @@ import VolPendingComplaint from "./pages/volunteer/VolPendingComplaint";
 import VolInProgressComplaint from "./pages/volunteer/VolInProgressComplaint";
 import ErPendingComplaints from "./pages/emergency-resp/ErPendingComplaints";
 import ErInProgressComplaints from "./pages/emergency-resp/ErInProgressComplaints";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLanding from "./pages/admin/AdminLanding";
+import ViewComplaints from "./pages/admin/ViewComplaints";
+import ViewUsers from "./pages/admin/ViewUsers";
+import ViewContactUs from "./pages/admin/ViewContactUs"
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
@@ -40,6 +45,12 @@ function App() {
           <Route path="/contact" element={<Contact_Us />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminLanding />} />
+          <Route path="/view-complaints" element={<ViewComplaints />} />
+          <Route path="/view-users" element={<ViewUsers />} />
+          <Route path="/view-contactus" element={<ViewContactUs />} />
+
 
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route path="/regular-user/:id" element={<RegulerUserLanding />} />

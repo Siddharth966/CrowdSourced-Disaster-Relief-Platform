@@ -6,6 +6,8 @@ export const btnClass =
 
   export const inputField = "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
 
+  export const submitBtn =
+  "w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300";
 export const colorPipeSeverity = (level) => {
   switch (level) {
     case "Moderate":
