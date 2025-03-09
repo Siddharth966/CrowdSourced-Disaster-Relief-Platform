@@ -54,3 +54,29 @@ export const updateStatus = async (req, res) => {
     });
   }
 };
+
+
+export const deleteComplaint = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Check if the complaint exists
+    const complaint = await Complaint.findById(id);
+    if (!complaint) {
+      return res.status(404).json({ message: "Complaint not found" });
+    }
+
+    // Delete the complaint
+    const result = await commanService.deleteById(Complaint, id);
+    console.log("Delete Result:", result);
+
+    return res.status(200).json({
+      message: result.message,
+      data: result.data, // Fixed incorrect reference (message.data → result.data)
+    });
+
+  } catch (err) {
+    console.error("Error deleting complaint:", err);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};

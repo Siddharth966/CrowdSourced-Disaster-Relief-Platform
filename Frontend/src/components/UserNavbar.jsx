@@ -58,7 +58,7 @@ const UserNavbar = ({ fullName, isRegularUser, navbarItem = [] }) => {
 
         {/* Greeting and Logout Button */}
         <div className="flex items-center space-x-4">
-          <span className="font-medium">{`Hi, ${fullName || "Guest"}`}</span>
+          <span className="font-medium">{`Hi, ${fullName || "Admin"}`}</span>
           <button
             onClick={() => handleAction("logout")}
             className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"

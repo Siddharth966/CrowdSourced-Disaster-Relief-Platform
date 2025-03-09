@@ -1,11 +1,12 @@
 import React from 'react'
-import UserNavbar from '../../components/UserNavbar'
+
+import AdminLayout from '../../layout/AdminLayout'
 
 const AdminLanding = () => {
   return (
-    <div>
-      <UserNavbar/>
-    </div>
+    <AdminLayout>
+
+    </AdminLayout>
   )
 }
 

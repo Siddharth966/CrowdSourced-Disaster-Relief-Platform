@@ -50,6 +50,13 @@ const Navbar = () => {
             Login
           </Link>
          
+          <Link
+            to="/admin-login"
+            className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
+          >
+            Admin
+          </Link>
+         
         </div>
       </div>
     </nav>
