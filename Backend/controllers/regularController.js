@@ -8,7 +8,7 @@ export const createComplaint = async (req, res) => {
 
     // Extract file paths from uploaded files
     const photos = req.files;
-    console.log("photos", photos);
+   
 
     // Create payload
     const payload = {

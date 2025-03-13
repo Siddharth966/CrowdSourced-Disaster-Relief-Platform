@@ -11,11 +11,11 @@ const AllComplaint = () => {
   const [complaints, setComplaints] = useState(null);
   const { id } = useParams();
   const token = localStorage.getItem("token");
-  console.log("complaints", complaints);
+
 
   useEffect(() => {
     const id = tokenActions.extractItems(token).id;
-    console.log("id", id);
+ 
     const fetchDetails = async () => {
       try {
         const userDetails = await getDetails(id); // Await the API call
