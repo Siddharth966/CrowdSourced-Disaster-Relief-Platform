@@ -10,6 +10,17 @@ import PrivateRoute from "./components/PrivateRoute";
 import VolunteerLanding from "./pages/volunteer/VolunteerLanding";
 import ErLanding from "./pages/emergency-resp/ErLanding";
 import AboutUs from "./pages/AboutUs";
+import AllComplaint from "./pages/complaints/AllComplaint";
+import Contact_Us from "./pages/Contact_Us";
+import VolPendingComplaint from "./pages/volunteer/VolPendingComplaint";
+import VolInProgressComplaint from "./pages/volunteer/VolInProgressComplaint";
+import ErPendingComplaints from "./pages/emergency-resp/ErPendingComplaints";
+import ErInProgressComplaints from "./pages/emergency-resp/ErInProgressComplaints";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLanding from "./pages/admin/AdminLanding";
+import ViewComplaints from "./pages/admin/ViewComplaints";
+import ViewUsers from "./pages/admin/ViewUsers";
+import ViewContactUs from "./pages/admin/ViewContactUs"
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
@@ -18,7 +29,7 @@ function App() {
       <Router>
         <ToastContainer
           position="top-right"
-          autoClose={1000}
+          autoClose={2000}
           hideProgressBar={true}
           newestOnTop={false}
           closeOnClick
@@ -30,10 +41,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
 
-
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact_Us />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminLanding />} />
+          <Route path="/view-complaints" element={<ViewComplaints />} />
+          <Route path="/view-users" element={<ViewUsers />} />
+          <Route path="/view-contactus" element={<ViewContactUs />} />
+
 
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route path="/regular-user/:id" element={<RegulerUserLanding />} />
@@ -43,7 +60,25 @@ function App() {
             />
             <Route path="/volunteer/:id" element={<VolunteerLanding />} />
             <Route path="/er/:id" element={<ErLanding />} />
+            <Route path="/view-complaints" element={<AllComplaint />} />
           </Route>
+          <Route
+            path="/volunteer/:id/pending-complaint"
+            element={<VolPendingComplaint />}
+          />
+          <Route
+            path="/volunteer/:id/inprogress-complaint"
+            element={<VolInProgressComplaint />}
+          />
+
+          <Route
+            path="/ErLanding/:id/pending-complaint"
+            element={<ErPendingComplaints />}
+          />
+          <Route
+            path="/ErLanding/:id/inprogress-complaint"
+            element={<ErInProgressComplaints />}
+          />
         </Routes>
       </Router>
     </>

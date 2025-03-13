@@ -3,20 +3,18 @@ import { commanService } from "../services/commanService.js";
 
 export const createComplaint = async (req, res) => {
   try {
-    const { address, landmark, severity, urgency, damageDesc } = req.body;
+    const { address, landmark, severity, urgency, damageDesc, status } =
+      req.body;
 
     // Extract file paths from uploaded files
-    const photos = req.files?.map((file) => file.path) || [];
+    const photos = req.files.map((file)=>file.filename)
+    console.log("photos", photos);
 
     // Create payload
     const payload = {
-      address,
-      landmark,
-      severity,
-      urgency,
-      damageDesc,
-      photos,
-      status,
+           ...req.body,
+           photos,
+ 
     };
 
     // Save complaint to the database

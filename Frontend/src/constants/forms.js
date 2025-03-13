@@ -131,22 +131,53 @@ export const complaintFields = [
     accept: "image/*",
     required: true,
   },
-  {
-    name: "urgency",
-    type: "radio",
-    label: "Urgency",
-    options: [
-      { value: "Low", label: "Low" },
-      { value: "Medium", label: "Medium" },
-      { value: "High", label: "High" },
-    ],
-    required: true,
-  },
+
   {
     name: "damageDesc",
     type: "textarea",
     label: "Damage Description (Optional)",
     placeholder: "Enter Damage Description",
     required: false,
+  },
+];
+
+export const contactFields = [
+  {
+    name: "name",
+    type: "text",
+    label: "Your Name",
+    placeholder: "Enter your name",
+    required: true,
+  },
+  {
+    name: "email",
+    type: "email",
+    label: "Email Address",
+    placeholder: "Enter your email",
+    required: true,
+  },
+  {
+    name: "subject",
+    type: "text",
+    label: "Subject",
+    placeholder: "Enter subject",
+    required: true,
+  },
+  {
+    name: "message",
+    type: "textarea",
+    label: "Message",
+    placeholder: "Write your message here...",
+    required: true,
+  },
+];
+
+export const adminLogin = [
+  {
+    name: "secret_key",
+    type: "text",
+    label: "Secret Key",
+    placeholder: "Enter Secret Key",
+    required: true,
   },
 ];

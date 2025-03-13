@@ -18,7 +18,6 @@ const LandingDesign = () => {
     <div className="h-screen ">
       <div
         className="w-full h-15/16 bg-cover bg-center shadow-lg"
-      
         style={{ backgroundImage: `url(${images[currentIndex]})` }}
       ></div>
 
@@ -57,7 +56,6 @@ const LandingDesign = () => {
         alt="Static Display"
         className="w-full mt-4 shadow-md"
       />
-
       <Footer />
     </div>
   );

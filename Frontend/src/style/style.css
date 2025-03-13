@@ -36,3 +36,14 @@
     #2f855a
   ); /* hover:from-green-500 hover:to-green-600 */
 }
+
+.p {
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.header {
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
