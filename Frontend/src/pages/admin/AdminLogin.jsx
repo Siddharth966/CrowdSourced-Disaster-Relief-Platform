@@ -28,7 +28,7 @@ const AdminLogin = () => {
             type="password"
             className="w-full p-3 pl-3 border border-gray-300 rounded-sm"
             name="secret_key"
-            placeholder="Enter Secret Key"
+            placeholder="Enter Password"
             onChange={handleChange}
             required
           />
