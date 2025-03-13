@@ -7,7 +7,6 @@ export const createComplaint = async (req, res) => {
       req.body;
    
     const photos = req.files.map((file)=>file.filename)
-    console.log("photos", photos);
 
     // Create payload
     const payload = {
