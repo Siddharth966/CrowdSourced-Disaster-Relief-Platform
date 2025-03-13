@@ -18,9 +18,7 @@ const Navbar = () => {
           <li>
             <Link className="text-white hover:text-blue-200">Home</Link>
           </li>
-          <li>
-            <Link className="text-white hover:text-blue-200">Request Help</Link>
-          </li>
+          
           <li>
             <Link className="text-white hover:text-blue-200">Volunteer</Link>
           </li>
@@ -29,6 +27,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link to ="/about" className="text-white hover:text-blue-200">About Us</Link>
+          </li>
+          <li>
+            <Link to ="/contact" className="text-white hover:text-blue-200">Contact</Link>
           </li>
         </ul>
 
@@ -45,6 +46,13 @@ const Navbar = () => {
             className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
           >
             Login
+          </Link>
+         
+          <Link
+            to="/admin-login"
+            className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
+          >
+            Admin
           </Link>
          
         </div>

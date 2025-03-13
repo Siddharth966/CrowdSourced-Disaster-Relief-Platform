@@ -6,11 +6,29 @@ import { getComplaints } from "../../service/complaintService";
 import ComplaintCard from "../../components/Complaints/ComplaintCard";
 import UserNavbar from "./../../components/UserNavbar";
 import Banner from "../../components/shared/Banner";
+import { RiNumbersLine } from "react-icons/ri";
+import { IoPersonAddOutline, IoPersonOutline } from "react-icons/io5";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+
+
 
 const VolunteerLanding = () => {
   const [details, setDetails] = useState(null);
   const [complaints, setComplaints] = useState(null);
+  const [inProgress, setInProgress] = useState(null);
+  const [minorComplaints, setMinorComplaints] = useState([]);
   const { id } = useParams();
+
+ 
+
+  useEffect(() => {
+    if (complaints) {
+      const minorComplaint = complaints.filter(
+        (item) => item.severity !== "Critical"
+      );
+      setMinorComplaints(minorComplaint);
+    }
+  }, [complaints]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -23,12 +41,33 @@ const VolunteerLanding = () => {
     };
     if (id) fetchDetails();
   }, [id]);
+  const menuItems = [
+  
+    {
+      label: "Pending Complaint",
+      icon: <IoIosInformationCircleOutline />,
+      route: `/volunteer/${id}/pending-complaint`,
+    },
+    {
+      label: "InProgress Complaint",
+      icon: <RiNumbersLine />,
+      route: `/volunteer/${id}/inprogress-complaint`,
+    },
+  ];
+
 
   useEffect(() => {
     const fetchComplaint = async () => {
       try {
-        const response = await getComplaints(["Pending"]);
-        setComplaints(response.data);
+        const pending = await getComplaints(["Pending"], 5);
+        setComplaints(pending.data);
+        const inprogress = await getComplaints(["In Progress"], 5);
+        console.log('inprogress',inprogress)
+        if(inprogress.data){
+          const items = inprogress.data.filter(item=>item.severity !=="Critical")
+          setInProgress(items);
+        }
+       
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
@@ -38,24 +77,25 @@ const VolunteerLanding = () => {
 
   return (
     <div>
-      <UserNavbar fullName={details?.fullName} isVolunteer={true} />
+      <UserNavbar fullName={details?.fullName} isRegularUser={false} navbarItem={menuItems}/>
 
       <Banner
         title="Volunteer"
         description="Volunteers play a crucial role in disaster relief efforts by providing immediate assistance, emotional support, and long-term recovery aid to affected communities.Volunteers play a crucial role in disaster relief efforts by providing immediate assistance, emotional support, and long-term recovery aid to affected communities."
       />
-      {/* <div className="herosection h-96"></div> */}
-      <div className="h-150 bg-blue-300">
-        <div className="flex justify-between">
-          <h3 className="header ml-3 text-2xl">Pending Complaints...</h3>
-          <Link className="header mr-4 underline" to="/view-complaints">
-            View All
-          </Link>
+
+     {/* <div className="herosection h-96"></div> */}
+     <div className="bg-blue-300">
+        <div>
+          <h3 className="header ml-3 pt-6 text-2xl">Pending Complaints...</h3>
+          <ComplaintCard items={minorComplaints} />
         </div>
 
         <div>
-          <ComplaintCard items={complaints} />
+          <h3 className="header ml-3 pt-6 text-2xl">In Progress Complaints...</h3>
+          <ComplaintCard items={inProgress} />
         </div>
+
       </div>
     </div>
   );

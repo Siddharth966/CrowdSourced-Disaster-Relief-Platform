@@ -4,8 +4,7 @@ import axios from "axios";
 import { baseUrl } from "./../../constants/env";
 import { toast, ToastContainer } from "react-toastify";
 
-const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
-  // If modal is not open, return null to prevent rendering
+const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
   if (!isModalOpen || !item) return null;
 
   const handleSubmit = async () => {
@@ -23,6 +22,10 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
       toast.error(error.response.data.message);
     }
   };
+  const onPhotoClick = (photoUrl) => {
+    window.open(photoUrl, "_blank");
+  };
+  
 
   return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-lg flex items-center justify-center z-50">
@@ -37,6 +40,7 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
                   key={index}
                   src={getPhotoUrl(photo)} // Use the service to get the photo URL
                   alt={`Complaint photo ${index + 1}`}
+                  onClick={()=>onPhotoClick(getPhotoUrl(photo))}
                   className="w-full h-32 object-cover rounded-md"
                 />
               ))}
@@ -56,15 +60,8 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal, isRegularUser }) => {
             <strong>Damage Description:</strong> {item.damageDesc || "NA"}
           </p>
 
-          <div className="mt-4 flex justify-between">
-            {!isRegularUser && (
-              <button
-                onClick={handleSubmit} // Close the modal when clicked
-                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-              >
-                Accept
-              </button>
-            )}
+          <div className="mt-4 flex justify-endA">
+           
             <button
               onClick={closeModal} // Close the modal when clicked
               className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"

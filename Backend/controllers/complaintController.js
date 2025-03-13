@@ -4,7 +4,8 @@ import { commanService } from "../services/commanService.js";
 export const updateStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body; // Correct: Get status from the request body
+    const { status } = req.body; 
+    
 
     // Fetch the complaint to check its current status
     const complaint = await commanService.getItemById(Complaint, id);
@@ -18,12 +19,21 @@ export const updateStatus = async (req, res) => {
     }
 
     // Optional: Restrict updates to only "Pending" complaints
+   if(status==='In Progress'){
     if (complaint.data.status !== "Pending") {
       return res.status(400).json({
         success: false,
         message: "Complaint is in Progress or Done and cannot be updated",
       });
     }
+   }else{
+    if (complaint.data.status !== "In Progress") {
+      return res.status(400).json({
+        success: false,
+        message: "Complaint is pending or Done and cannot be updated",
+      });
+    }
+   }
 
     // Update the complaint status
     const updatedResult = await commanService.update(Complaint, id, { status });
@@ -42,5 +52,31 @@ export const updateStatus = async (req, res) => {
       success: false,
       message: error.message || "Something went wrong",
     });
+  }
+};
+
+
+export const deleteComplaint = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Check if the complaint exists
+    const complaint = await Complaint.findById(id);
+    if (!complaint) {
+      return res.status(404).json({ message: "Complaint not found" });
+    }
+
+    // Delete the complaint
+    const result = await commanService.deleteById(Complaint, id);
+    console.log("Delete Result:", result);
+
+    return res.status(200).json({
+      message: result.message,
+      data: result.data, // Fixed incorrect reference (message.data → result.data)
+    });
+
+  } catch (err) {
+    console.error("Error deleting complaint:", err);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };

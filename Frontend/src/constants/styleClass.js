@@ -2,16 +2,20 @@ export const commonClasses =
   "w-full p-1 pl-3 border border-gray-300 rounded-sm";
 
 export const btnClass =
-  "bg-green-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2";
+  "w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300";
 
+  export const inputField = "w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+
+  export const submitBtn =
+  "w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300";
 export const colorPipeSeverity = (level) => {
   switch (level) {
     case "Moderate":
-      return { backgroundColor: "yellow", color: "black" };
+      return { backgroundColor: "#9E9E9E ", color: "white" };
     case "Minor":
-      return { backgroundColor: "purple", color: "white" };
+      return { backgroundColor: "#BDBDBD  ", color: "white" };
     case "Critical":
-      return { backgroundColor: "red", color: "white" };
+      return { backgroundColor: "#757575 ", color: "white" };
     default:
       return {};
   }
