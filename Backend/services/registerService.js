@@ -20,7 +20,7 @@ export const authService = {
   },
 
   login: async (email, password) => {
-    console.log("inside login");
+
     // Input validation
     if (!email || !password) {
       throw new Error("Email and password are required");
@@ -28,7 +28,7 @@ export const authService = {
 
     // Find user by email
     const user = await User.findOne({ email });
-    console.log("user", user);
+    
     if (!user) {
       throw new Error("Invalid email or password");
     }
