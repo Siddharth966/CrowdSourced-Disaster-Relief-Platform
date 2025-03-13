@@ -62,7 +62,7 @@ const VolunteerLanding = () => {
         const pending = await getComplaints(["Pending"], 5);
         setComplaints(pending.data);
         const inprogress = await getComplaints(["In Progress"], 5);
-        console.log('inprogress',inprogress)
+      
         if(inprogress.data){
           const items = inprogress.data.filter(item=>item.severity !=="Critical")
           setInProgress(items);
