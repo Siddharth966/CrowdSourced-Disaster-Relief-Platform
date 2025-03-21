@@ -123,14 +123,14 @@ export const complaintFields = [
     ],
     required: true,
   },
-  {
-    name: "photos",
-    type: "file",
-    label: "Photos",
-    placeholder: "Upload Photos",
-    accept: "image/*",
-    required: true,
-  },
+  // {
+  //   name: "photos",
+  //   type: "file",
+  //   label: "Photos",
+  //   placeholder: "Upload Photos",
+  //   accept: "image/*",
+  //   required: true,
+  // },
 
   {
     name: "damageDesc",
@@ -181,3 +181,36 @@ export const adminLogin = [
     required: true,
   },
 ];
+
+export const donationFields = [
+  {
+    name: "donorName",
+    type: "text",
+    label: "Donor Name",
+    placeholder: "Enter your name",
+    required: true,
+  },
+  {
+    name: "address",
+    type: "text",
+    label: "Address",
+    placeholder: "Enter your address",
+    required: true,
+  },
+  {
+    name: "donationCategory",
+    type: "select",
+    label: "Donation Category",
+    placeholder: "Select a category",
+    required: true,
+    options: ["Food", "Clothing", "Medical Supplies", "Monetary", "Other"],
+  },
+  {
+    name: "phoneNumber",
+    type: "tel",
+    label: "Phone Number",
+    placeholder: "Enter your phone number",
+    required: true,
+  },
+];
+
