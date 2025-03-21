@@ -7,5 +7,5 @@ import {
 const router = express.Router();
 
 router.post("/donation", createDonation);
-router.get("/donations", getAllDonations);
+router.get("/get-donation", getAllDonations);
 export default router;
