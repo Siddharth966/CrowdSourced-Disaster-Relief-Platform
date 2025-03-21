@@ -3,26 +3,7 @@ import { userService } from "../services/userService.js";
 
 const createVolunteer = async (req, res) => {
   try {
-    const {
-      fullName,
-      email,
-      password,
-      gender,
-      phone,
-      address,
-      pincode,
-      user_type,
-    } = req.body;
-    const result = await authService.register({
-      fullName,
-      email,
-      password,
-      gender,
-      phone,
-      address,
-      pincode,
-      user_type,
-    });
+    const result = await authService.register(req.body);
     res.status(result.status).json({ message: result.message });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,24 +1,49 @@
 import { User } from "../models/User.js"; // Import your
 import jwt from "jsonwebtoken";
+import { Volunteer } from "../models/Volunteer.js";
+import { RegularUser } from "../models/RegularUser.js";
+import { EmergencyResponder } from "../models/EmergencyResponder.js";
 
 export const authService = {
   register: async (payload) => {
     try {
-      const { email } = payload;
+      const { email, user_type } = payload;
+  
+      // Check if email is already registered
       let user = await User.findOne({ email });
       if (user) {
         return { status: 400, message: "Email already registered" };
       }
-
-      // Save user based on type
+  
+      // Save user in global User table
       let newUser = new User(payload);
       await newUser.save();
+  
+      // Save user in the respective user type collection
+      let userModel;
+      switch (user_type) {
+        case "volunteer":
+          userModel = Volunteer;
+          break;
+        case "emergency_responder":
+          userModel = EmergencyResponder;
+          break;
+        case "regular_user":
+          userModel = RegularUser;
+          break;
+        default:
+          return { status: 400, message: "Invalid user type" };
+      }
+  
+      let specificUser = new userModel(payload);
+      await specificUser.save();
+  
       return { status: 201, message: "User registered successfully" };
     } catch (error) {
       throw new Error(error.message);
     }
   },
-
+  
   login: async (email, password) => {
 
     // Input validation
