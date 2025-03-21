@@ -80,3 +80,22 @@ export const deleteComplaint = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+// Get count of complaints based on statuses
+export const getComplaintCounts = async (req, res) => {
+  try {
+      const pendingCount = await Complaint.countDocuments({ status: 'Pending' });
+      const inProgressCount = await Complaint.countDocuments({ status: 'In Progress' });
+      const doneCount = await Complaint.countDocuments({ status: 'D one' });
+      const totalCount = await Complaint.countDocuments(); // Count all complaints
+
+      res.json({
+          pending: pendingCount,
+          in_progress: inProgressCount,
+          done: doneCount,
+          total: totalCount
+      });
+  } catch (error) {
+      res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};

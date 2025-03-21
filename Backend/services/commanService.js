@@ -20,23 +20,22 @@ export const commanService = {
       throw new Error("Internal server error");
     }
   },
-  getAll: async (model) => {
+  getAll: async (model, { filter = {}, limitNumber = 10 } = {}) => {
     try {
-      // Fetch all records from the model
-
-      const allRecords = await model.find()
-
+      // Fetch records based on filter and limit
+      const allRecords = await model.find(filter).limit(limitNumber);
+  
       // Return the records
       return {
         message: `${model.modelName} records fetched successfully`,
         data: allRecords,
-   
       };
     } catch (error) {
       console.error("Error fetching records:", error);
       throw new Error("Internal server error");
     }
   },
+  
   getItemById: async (model, id) => {
     try {
       // Fetch the record by ID from the model

@@ -61,7 +61,9 @@ const ErLanding = () => {
         const inprogress = await getComplaints(["In Progress"], 5);
       
         if(inprogress.data){
-          const items = inprogress.data.filter(item=>item.severity==="Critical")
+          let items = inprogress.data.filter(item=>item.severity==="Critical")
+           items = items.filter(item=>item.status==="In Progress")
+
           setInProgress(items);
         }
        
