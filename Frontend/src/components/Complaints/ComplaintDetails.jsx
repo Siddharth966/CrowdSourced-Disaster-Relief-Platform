@@ -32,7 +32,7 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
       <div className="bg-white p-6 rounded-md w-96">
         <h2 className="text-xl font-semibold">Complaint Details</h2>
         <div className="mt-4">
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <h4 className="text-gray-500">Photos</h4>
             <div className="space-y-2">
               {item.photos.map((photo, index) => (
@@ -45,7 +45,7 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
           <p>
             <strong>Severity:</strong> {item.severity}
           </p>

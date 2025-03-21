@@ -16,7 +16,7 @@ const AdminLogin = () => {
       navigate("/admin-dashboard");
       toast.success("Admin Login Successful");
     } else {
-      toast.error("Invali Secret Key");
+      toast.error("Invalid Password !!");
     }
   };
   return (

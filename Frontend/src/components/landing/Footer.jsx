@@ -1,9 +1,10 @@
 import React from "react";
 import AddComplaint from "./AddComplaint";
+import WhatsAppSupport from "./WhatsAppSupport";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8 mt-8">
+    <footer className="bg-gray-800 text-white ">
       <div className="bg-gray-100 py-8 mt-8">
         <div className="max-w-screen-lg mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-800 mb-4">
@@ -43,6 +44,7 @@ const Footer = () => {
             </div>
             
       <AddComplaint/>
+      <WhatsAppSupport />
 
           </div>
         </div>

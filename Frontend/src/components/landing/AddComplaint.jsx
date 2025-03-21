@@ -4,17 +4,23 @@ import { Link } from "react-router-dom";
 
 const AddComplaint = () => {
   return (
-    <div className="h-60 bg-gray-100 flex justify-center items-center flex-col gap-4 p-4">
+    <div className="fixed right-4 top-3/5 transform -translate-y-1/2 z-50">
       {/* Banner Image */}
-      <div className="h-36">
-        <img src={BannerImg} alt="Banner" className="h-full object-cover rounded-lg shadow-md" />
+      <div className="h-18 mb-4">
+        <img
+          src={BannerImg}
+          alt="Banner"
+          className="h-full object-cover rounded-lg shadow-md"
+        />
       </div>
 
       {/* Add Complaint Button */}
       <Link to="/login">
-        <button className="px-6 py-3 text-lg font-semibold text-white bg-green-500 rounded-full shadow-lg hover:bg-green-600 hover:scale-105 transition-transform duration-300">
-          ADD COMPLAINTS
-        </button>
+      
+      <button className="px-4 py-2 text-sm font-semibold text-white bg-green-500 rounded-full shadow-lg hover:bg-green-600 hover:scale-105 transition-all duration-300">
+        Add Complaint
+      </button>
+   
       </Link>
     </div>
   );

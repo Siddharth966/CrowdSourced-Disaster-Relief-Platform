@@ -21,6 +21,7 @@ import AdminLanding from "./pages/admin/AdminLanding";
 import ViewComplaints from "./pages/admin/ViewComplaints";
 import ViewUsers from "./pages/admin/ViewUsers";
 import ViewContactUs from "./pages/admin/ViewContactUs"
+import DonationForm from "./components/donation/DonationForm";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
@@ -43,6 +44,7 @@ function App() {
 
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact_Us />} />
+          <Route path="/donation" element={<DonationForm />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin-login" element={<AdminLogin />} />
