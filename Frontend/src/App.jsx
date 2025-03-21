@@ -21,6 +21,7 @@ import AdminLanding from "./pages/admin/AdminLanding";
 import ViewComplaints from "./pages/admin/ViewComplaints";
 import ViewUsers from "./pages/admin/ViewUsers";
 import ViewContactUs from "./pages/admin/ViewContactUs"
+import ViewDonation from "./pages/admin/ViewDonation"
 import DonationForm from "./components/donation/DonationForm";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/view-complaints" element={<ViewComplaints />} />
           <Route path="/view-users" element={<ViewUsers />} />
           <Route path="/view-contactus" element={<ViewContactUs />} />
+          <Route path="/view-donation" element={<ViewDonation />} />
 
 
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>

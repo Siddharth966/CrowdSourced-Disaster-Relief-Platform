@@ -21,10 +21,10 @@ const donationSchema = new mongoose.Schema({
     required: true,
     match: [/^\d{10}$/, "Please enter a valid 10-digit phone number"],
   },
-  date: {
+  createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+}
 });
 
 const Donation = mongoose.model("Donation", donationSchema);

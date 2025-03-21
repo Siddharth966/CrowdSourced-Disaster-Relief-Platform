@@ -72,13 +72,12 @@ export const deleteContact = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Check if the complaint exists
     const contact = await ContactUs.findById(id);
     if (!contact) {
       return res.status(404).json({ message: "Contact details not found" });
     }
 
-    // Delete the complaint
+
     const result = await commanService.deleteById(ContactUs, id);
     console.log("Delete Result:", result);
 
