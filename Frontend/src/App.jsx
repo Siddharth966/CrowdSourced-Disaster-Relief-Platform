@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Register from "./components/Register";
 import Login from "./pages/Login";
@@ -20,72 +21,84 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminLanding from "./pages/admin/AdminLanding";
 import ViewComplaints from "./pages/admin/ViewComplaints";
 import ViewUsers from "./pages/admin/ViewUsers";
-import ViewContactUs from "./pages/admin/ViewContactUs"
-import ViewDonation from "./pages/admin/ViewDonation"
-import DonationForm from "./components/donation/DonationForm";
+import ViewContactUs from "./pages/admin/ViewContactUs";
+import EmergencyResponderRegister from "./components/EmergencyResponderRegister";
+import { AuthProvider } from "./context/AuthContext";
+import Navbar from "./components/landing/Navbar";
+import EmergencyResponderLogin from "./pages/EmergencyResponderLogin";
+
+// Wrapper component to handle navbar rendering
+const AppContent = () => {
+  const location = useLocation();
+  const isAuthenticated = localStorage.getItem("token");
+  
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {location.pathname === "/" && <Navbar />}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact_Us />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/register/emergency-responder" element={<EmergencyResponderRegister />} />
+        <Route path="/loginresponder" element={<EmergencyResponderLogin />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin-dashboard" element={<AdminLanding />} />
+        <Route path="/view-complaints" element={<ViewComplaints />} />
+        <Route path="/view-users" element={<ViewUsers />} />
+        <Route path="/view-contactus" element={<ViewContactUs />} />
+
+        <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+          <Route path="/regular-user/:id" element={<RegulerUserLanding />} />
+          <Route
+            path="/regular-user/:id/complaint"
+            element={<ComplaintForm />}
+          />
+          
+          <Route path="/volunteer/:id" element={<VolunteerLanding />} />
+          <Route path="/er/:id" element={<ErLanding />} />
+          <Route path="/view-complaints" element={<AllComplaint />} />
+        </Route>
+        <Route
+          path="/volunteer/:id/pending-complaint"
+          element={<VolPendingComplaint />}
+        />
+        <Route
+          path="/volunteer/:id/inprogress-complaint"
+          element={<VolInProgressComplaint />}
+        />
+        <Route
+          path="/ErLanding/:id/pending-complaint"
+          element={<ErPendingComplaints />}
+        />
+        <Route
+          path="/ErLanding/:id/inprogress-complaint"
+          element={<ErInProgressComplaints />}
+        />
+      </Routes>
+    </div>
+  );
+};
 
 function App() {
-  const isAuthenticated = localStorage.getItem("token");
   return (
-    <>
-      <Router>
-        <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<Contact_Us />} />
-          <Route path="/donation" element={<DonationForm />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/admin-dashboard" element={<AdminLanding />} />
-          <Route path="/view-complaints" element={<ViewComplaints />} />
-          <Route path="/view-users" element={<ViewUsers />} />
-          <Route path="/view-contactus" element={<ViewContactUs />} />
-          <Route path="/view-donation" element={<ViewDonation />} />
-
-
-          <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
-            <Route path="/regular-user/:id" element={<RegulerUserLanding />} />
-            <Route
-              path="/regular-user/:id/complaint"
-              element={<ComplaintForm />}
-            />
-            <Route path="/volunteer/:id" element={<VolunteerLanding />} />
-            <Route path="/er/:id" element={<ErLanding />} />
-            <Route path="/view-complaints" element={<AllComplaint />} />
-          </Route>
-          <Route
-            path="/volunteer/:id/pending-complaint"
-            element={<VolPendingComplaint />}
-          />
-          <Route
-            path="/volunteer/:id/inprogress-complaint"
-            element={<VolInProgressComplaint />}
-          />
-
-          <Route
-            path="/ErLanding/:id/pending-complaint"
-            element={<ErPendingComplaints />}
-          />
-          <Route
-            path="/ErLanding/:id/inprogress-complaint"
-            element={<ErInProgressComplaints />}
-          />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </Router>
   );
 }
 

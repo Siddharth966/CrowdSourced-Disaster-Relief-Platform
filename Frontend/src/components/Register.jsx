@@ -4,9 +4,11 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { registerFields } from "../constants/forms";
 import { baseUrl } from "../constants/env";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   // Initialize form state
   const initialFormState = registerFields.reduce((acc, field) => {
@@ -47,14 +49,24 @@ const Register = () => {
     try {
       const response = await axios.post(`${baseUrl}/register`, formData);
       if (response.status === 201) {
+        login(response.data.token);
         toast.success(response.data.message);
-        navigate("/login");
+        
+        // Navigate based on user type
+        const userType = response.data.user.user_type;
+        const userId = response.data.user._id;
+        
+        if (userType === "regular_user") {
+          navigate(`/regular-user/${userId}`);
+        } else if (userType === "volunteer") {
+          navigate(`/volunteer/${userId}`);
+        }
       } else if (response.status !== 200) {
         toast.error(response.data.message);
       }
     } catch (error) {
       toast.error(
-        error.response?.data?.message || "Error registering volunteer"
+        // error.response?.data?.message || "Error registering user"
       );
     }
   };

@@ -1,57 +1,39 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { baseUrl } from "../constants/env";
 import { useAuth } from "../context/AuthContext";
 
-const Login = () => {
+const EmergencyResponderLogin = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${baseUrl}/login`, formData);
-     
+      const response = await axios.post(`${baseUrl}/login/emergency-responder`, formData);
+      console.log("Data:",formData);
+      
       if (response.status === 200) {
         login(response.data.token);
-        console.log(response.data)
         toast.success("Login successful!");
-        
-        // Navigate based on user type
-        const userType = response.data.user.user_type;
-        const userId = response.data.user.id;
-        if (userType === "regular_user") {
-          navigate(`/regular-user/${userId}`);
-        } else if (userType === "volunteer") {
-          navigate(`/volunteer/${userId}`);
-        }
-        
-        else if (userType === "admin") {
-          navigate("/admin-dashboard");
-        }
+        navigate(`/er/${response.data.user._id}`);
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed");
+      toast.error(error.response?.data?.message || "Invalid credentials");
     }
   };
 
   return (
     <div className="min-h-screen bg-blue-300 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl mb-6 text-center font-semibold">LOGIN</h2>
+        <h2 className="text-2xl mb-6 text-center font-semibold">Emergency Responder Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-700 mb-2">Email</label>
@@ -83,14 +65,14 @@ const Login = () => {
           </button>
         </form>
         <p className="text-center mt-4 text-gray-700">
-          Don't have an account?{" "}
-          <a href="/register" className="text-blue-600 hover:underline">
+          Don't have an account? {" "}
+          <Link to="/register/emergency-responder" className="text-blue-600 hover:underline">
             Register here
-          </a>
+          </Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default EmergencyResponderLogin;

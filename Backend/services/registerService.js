@@ -1,8 +1,8 @@
-import { User } from "../models/User.js"; // Import your
+import User from "../models/User.js";
 import jwt from "jsonwebtoken";
-import { Volunteer } from "../models/Volunteer.js";
-import { RegularUser } from "../models/RegularUser.js";
-import { EmergencyResponder } from "../models/EmergencyResponder.js";
+import Volunteer from "../models/Volunteer.js";
+import RegularUser from "../models/RegularUser.js";
+import EmergencyResponder from "../models/EmergencyResponder.js";
 
 export const authService = {
   register: async (payload) => {
@@ -45,7 +45,6 @@ export const authService = {
   },
   
   login: async (email, password) => {
-
     // Input validation
     if (!email || !password) {
       throw new Error("Email and password are required");

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const regularUserSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -48,7 +49,7 @@ const regularUserSchema = new mongoose.Schema({
     enum: ["regular_user"], // Restricts values to "volunteer" only
     required: true,
   }
-  
 });
 
-export const RegularUser = mongoose.model("regular_user", regularUserSchema);
+const RegularUser = mongoose.model("regular_user", regularUserSchema);
+export default RegularUser;

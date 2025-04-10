@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.put("/complaint/status/:id", updateStatus);
 router.get("/complaint/:id/", getComplaints);
-router.get("/complaint-count/", getComplaintCounts);
+router.get("/complaint-count", getComplaintCounts);
 export default router;

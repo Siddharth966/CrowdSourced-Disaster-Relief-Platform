@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const volunteerSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -48,7 +49,7 @@ const volunteerSchema = new mongoose.Schema({
     enum: ["volunteer"], // Restricts values to "volunteer" only
     required: true,
   }
-  
 });
 
-export const Volunteer = mongoose.model("volunteer", volunteerSchema);
+const Volunteer = mongoose.model("volunteer", volunteerSchema);
+export default Volunteer;

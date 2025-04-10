@@ -4,8 +4,7 @@ import { commanService } from "../services/commanService.js";
 export const updateStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body; 
-    
+    const { status } = req.body;
 
     // Fetch the complaint to check its current status
     const complaint = await commanService.getItemById(Complaint, id);
@@ -19,21 +18,21 @@ export const updateStatus = async (req, res) => {
     }
 
     // Optional: Restrict updates to only "Pending" complaints
-   if(status==='In Progress'){
-    if (complaint.data.status !== "Pending") {
-      return res.status(400).json({
-        success: false,
-        message: "Complaint is in Progress or Done and cannot be updated",
-      });
+    if (status === "In Progress") {
+      if (complaint.data.status !== "Pending") {
+        return res.status(400).json({
+          success: false,
+          message: "Complaint is in Progress or Done and cannot be updated",
+        });
+      }
+    } else {
+      if (complaint.data.status !== "In Progress") {
+        return res.status(400).json({
+          success: false,
+          message: "Complaint is pending or Done and cannot be updated",
+        });
+      }
     }
-   }else{
-    if (complaint.data.status !== "In Progress") {
-      return res.status(400).json({
-        success: false,
-        message: "Complaint is pending or Done and cannot be updated",
-      });
-    }
-   }
 
     // Update the complaint status
     const updatedResult = await commanService.update(Complaint, id, { status });
@@ -55,7 +54,6 @@ export const updateStatus = async (req, res) => {
   }
 };
 
-
 export const deleteComplaint = async (req, res) => {
   try {
     const { id } = req.params;
@@ -74,7 +72,6 @@ export const deleteComplaint = async (req, res) => {
       message: result.message,
       data: result.data, // Fixed incorrect reference (message.data → result.data)
     });
-
   } catch (err) {
     console.error("Error deleting complaint:", err);
     return res.status(500).json({ message: "Internal Server Error" });
@@ -84,18 +81,22 @@ export const deleteComplaint = async (req, res) => {
 // Get count of complaints based on statuses
 export const getComplaintCounts = async (req, res) => {
   try {
-      const pendingCount = await Complaint.countDocuments({ status: 'Pending' });
-      const inProgressCount = await Complaint.countDocuments({ status: 'In Progress' });
-      const doneCount = await Complaint.countDocuments({ status: 'D one' });
-      const totalCount = await Complaint.countDocuments(); // Count all complaints
+    const pendingCount = await Complaint.countDocuments({ status: "Pending" });
+    const inProgressCount = await Complaint.countDocuments({
+      status: "In Progress",
+    });
+    const doneCount = await Complaint.countDocuments({ status: "Done" });
+    const totalCount = await Complaint.countDocuments(); // Count all complaints
 
-      res.json({
-          pending: pendingCount,
-          in_progress: inProgressCount,
-          done: doneCount,
-          total: totalCount
-      });
+    res.json({
+      data: {
+        pending: pendingCount,
+        in_progress: inProgressCount,
+        done: doneCount,
+        total: totalCount,
+      },
+    });
   } catch (error) {
-      res.status(500).json({ message: 'Server error', error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };

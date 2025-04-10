@@ -31,7 +31,7 @@ const ContactUs = () => {
     <div className="max-w-5xl mx-auto mt-10 bg-white shadow-2xl rounded-2xl border border-gray-200 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left Section - Disaster Relief Info */}
-        <div className="bg-blue-600 text-white p-8 flex flex-col justify-between">
+        <div className="bg-blue-400 text-white p-8 flex flex-col justify-between">
           <div>
             <h2 className="text-3xl font-bold mb-4">Disaster Relief System</h2>
             <p className="text-lg">

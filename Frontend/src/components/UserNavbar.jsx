@@ -27,7 +27,7 @@ const UserNavbar = ({ fullName, isRegularUser, navbarItem = [] }) => {
       {/* Logo or Brand Name */}
       <div>
         <Link to="/" className="text-2xl font-bold">
-          ReliefConnect
+          DisasterRelief
         </Link>
       </div>
 

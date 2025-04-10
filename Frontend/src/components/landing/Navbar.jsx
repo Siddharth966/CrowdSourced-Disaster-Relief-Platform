@@ -1,62 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom"; // For routing
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const toggleNav = () => setNavOpen(!navOpen);
+
   return (
-    <nav className="bg-blue-950 p-4 shadow-lg">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo or Brand Name */}
-        <div className="w-1/2">
-          <Link className="text-white text-2xl font-bold transform rotate-[-10]">
-            ReliefConnect
-          </Link>
-        </div>
+    <nav className="bg-white shadow-md fixed w-full z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          <div className="text-2xl font-bold text-indigo-600">MyApp</div>
 
-        {/* Navigation Links */}
+          <div className="hidden md:flex space-x-6">
+            <a href="/" className="text-gray-600 hover:text-indigo-600">Home</a>
+            <a href="/about" className="text-gray-600 hover:text-indigo-600">About</a>
+            <a href="/services" className="text-gray-600 hover:text-indigo-600">Services</a>
+            <a href="/contact" className="text-gray-600 hover:text-indigo-600">Contact</a>
+          </div>
 
-        <ul className="flex space-x-6 w-3/5">
-          <li>
-            <Link className="text-white hover:text-blue-200">Home</Link>
-          </li>
-          
-          <li>
-            <Link className="text-white hover:text-blue-200">Volunteer</Link>
-          </li>
-          <li>
-            <Link to="/donation" className="text-white hover:text-blue-200">Donate</Link>
-          </li>
-          <li>
-            <Link to ="/about" className="text-white hover:text-blue-200">About Us</Link>
-          </li>
-          <li>
-            <Link to ="/contact" className="text-white hover:text-blue-200">Contact</Link>
-          </li>
-        </ul>
-
-        {/* Register Button */}
-        <div className="flex space-x-5 w-1/3 justify-end">
-          <Link
-            to="/register"
-            className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
-          >
-            Register
-          </Link>
-          <Link
-            to="/login"
-            className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
-          >
-            Login
-          </Link>
-         
-          <Link
-            to="/admin-login"
-            className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300"
-          >
-            Admin
-          </Link>
-         
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button onClick={toggleNav} className="text-gray-700 focus:outline-none">
+              {navOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {navOpen && (
+        <div className="md:hidden bg-white px-4 pt-2 pb-4 space-y-2 shadow">
+          <a href="/" className="block text-gray-600 hover:text-indigo-600">Home</a>
+          <a href="/about" className="block text-gray-600 hover:text-indigo-600">About</a>
+          <a href="/services" className="block text-gray-600 hover:text-indigo-600">Services</a>
+          <a href="/contact" className="block text-gray-600 hover:text-indigo-600">Contact</a>
+        </div>
+      )}
     </nav>
   );
 };
