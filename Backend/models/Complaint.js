@@ -11,13 +11,9 @@ const complaintSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    lat: {
-      type: Number,
-      required: false,
-    },
-    long: {
-      type: Number,
-      required: false,
+    mobileNumber: {
+      type: String,
+      required: true,
     },
     severity: {
       type: String,

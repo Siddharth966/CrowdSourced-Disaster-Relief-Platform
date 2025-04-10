@@ -1,5 +1,6 @@
-
 import mongoose from "mongoose";
+import User from "../models/User.js";
+
 const erSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -49,7 +50,7 @@ const erSchema = new mongoose.Schema({
     enum: ["emergency_responder"], // Restricts values to "volunteer" only
     required: true,
   }
-  
 });
 
-export const EmergencyResponder = mongoose.model("emergency_responder", erSchema);
+const EmergencyResponder = mongoose.model("emergency_responder", erSchema);
+export default EmergencyResponder;

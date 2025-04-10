@@ -1,5 +1,5 @@
 import React from "react";
-import { BannerImg } from "../../constants/Images";
+import { BannerImg1 } from "../../constants/Images";
 import { Link } from "react-router-dom";
 
 const AddComplaint = () => {
@@ -8,7 +8,7 @@ const AddComplaint = () => {
       {/* Banner Image */}
       <div className="h-18 mb-4">
         <img
-          src={BannerImg}
+          src={BannerImg1}
           alt="Banner"
           className="h-full object-cover rounded-lg shadow-md"
         />

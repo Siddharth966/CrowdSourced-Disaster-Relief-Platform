@@ -1,6 +1,5 @@
 import ContactUs from "../models/ContactUs.js";
-
-import { User } from "../models/User.js";
+import User from "../models/User.js";
 import { commanService } from "../services/commanService.js";
 
 export const contactUsForm = async (req, res) => {
@@ -47,24 +46,33 @@ export const deleteUser = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find(); // Fetch all users
-    res.json(users);
+    const users = await User.find().select('-password'); // Exclude password from response
+    res.status(200).json({
+      message: "Users fetched successfully",
+      data: users
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error });
+    console.error("Error fetching users:", error);
+    res.status(500).json({ 
+      message: "Failed to fetch users",
+      error: error.message 
+    });
   }
 };
 
 export const getAllContacts = async (req, res) => {
   try {
-    const contacts = await ContactUs.find(); // Fetch all contacts
-    console.log(contacts)
-
+    const contacts = await ContactUs.find().sort({ createdAt: -1 }); // Sort by newest first
     res.status(200).json({
-     
-      data: contacts, // Fixed incorrect reference (message.data → result.data)
+      message: "Contacts fetched successfully",
+      data: contacts
     });
   } catch (err) {
-    res.status(500).json({ error: "Error fetching contacts" });
+    console.error("Error fetching contacts:", err);
+    res.status(500).json({ 
+      message: "Failed to fetch contacts",
+      error: err.message 
+    });
   }
 };
 

@@ -18,14 +18,25 @@ const ComplaintCard = ({ items, isRegularUser }) => {
     setSelectedComplaint(null); // Clear selected complaint when modal is closed
   };
 
+  // Function to format the date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
   return (
     <div className="flex flex-wrap gap-6 p-2 justify-center">
       {items &&
         items.map((item) => (
           <div
             key={item._id}
-            className="w-64 bg-gradient-to-tr from-[#918e91] to-[#ffffff]
- text-white rounded-md  pl-2 pr-2 flex flex-col justify-between"
+            className="w-64 bg-yellow-200 rounded-md  pl-2 pr-2 flex flex-col justify-between"
             // Set a minimum height for uniform cards
           >
             <div className="space-y-2 mt-2">
@@ -35,6 +46,9 @@ const ComplaintCard = ({ items, isRegularUser }) => {
               >
                 {item.severity}
               </div>
+              <div className="text-sm text-black-300">
+                Created: {formatDate(item.createdAt)}
+              </div>
             </div>
 
             <div className="">
@@ -43,7 +57,6 @@ const ComplaintCard = ({ items, isRegularUser }) => {
                 <p>{item.address}</p>
                 <p>{item.landmark || "NA"}</p>
               </div>
-
               <div>
                 <h4 className="text-gray-400">Damage</h4>
                 <p>{item.damageDesc || "NA"}</p>

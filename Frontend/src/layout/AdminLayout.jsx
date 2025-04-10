@@ -21,12 +21,7 @@ const AdminLayout = ({ children }) => {
       icon: <RiNumbersLine />,
       route: `/view-contactus`,
     },
-    {
-      label: "View Donation",
-      icon: <RiNumbersLine />,
-      route: `/view-donation`,
-    },
-    
+   
   ];
 
   return (

@@ -6,6 +6,8 @@ import BackgroundImage3 from "../assets/image3.png";
 import BackgroundImage4 from "../assets/image4.png";
 import BackgroundImage5 from "../assets/image5.png";
 import BannerImage from "../assets/image.png"
+import BannerImage1 from "../assets/$RSK7V8C.png"
+
 
 export const images = [
   BackgroundImage1,
@@ -16,3 +18,4 @@ export const images = [
 ];
 
 export const BannerImg = BannerImage
+export const BannerImg1 = BannerImage1

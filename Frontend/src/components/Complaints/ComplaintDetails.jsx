@@ -26,13 +26,24 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
     window.open(photoUrl, "_blank");
   };
   
+  // Function to format the date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
 
   return (
     <div className="fixed inset-0 bg-opacity-50 backdrop-blur-lg flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-md w-96">
         <h2 className="text-xl font-semibold">Complaint Details</h2>
         <div className="mt-4">
-          {/* <div className="mt-4">
+          { <div className="mt-4">
             <h4 className="text-gray-500">Photos</h4>
             <div className="space-y-2">
               {item.photos.map((photo, index) => (
@@ -45,9 +56,13 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
                 />
               ))}
             </div>
-          </div> */}
+          </div> }
           <p>
             <strong>Severity:</strong> {item.severity}
+          </p>
+
+          <p>
+            <strong>Created At:</strong> {formatDate(item.createdAt)}
           </p>
 
           <p>
@@ -57,11 +72,13 @@ const ComplaintDetails = ({ isModalOpen, item, closeModal }) => {
             <strong>Landmark:</strong> {item.landmark}
           </p>
           <p>
+            <strong>Mobile Number:</strong> {item.mobileNumber}
+          </p>
+          <p>
             <strong>Damage Description:</strong> {item.damageDesc || "NA"}
           </p>
 
-          <div className="mt-4 flex justify-endA">
-           
+          <div className="mt-4 flex justify-end">
             <button
               onClick={closeModal} // Close the modal when clicked
               className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"

@@ -9,13 +9,12 @@ import Banner from "../../components/shared/Banner";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { RiNumbersLine } from "react-icons/ri";
 
-
-
 const ErLanding = () => {
   const [details, setDetails] = useState(null);
   const [complaints, setComplaints] = useState(null);
   const [inProgress, setInProgress] = useState(null);
   const [criticalComplaints, setCriticalComplaints] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     if (complaints) {
@@ -24,9 +23,7 @@ const ErLanding = () => {
       );
       setCriticalComplaints(criticalComplaint);
     }
-   
   }, [complaints]);
-  const { id } = useParams();
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -40,43 +37,46 @@ const ErLanding = () => {
   }, [id]);
 
   const menuItems = [
-    
-      {
-        label: "Pending Complaint",
-        icon: <IoIosInformationCircleOutline />,
-        route: `/ErLanding/${id}/pending-complaint`,
-      },
-      {
-        label: "InProgress Complaint",
-         icon: <RiNumbersLine />,
-        route: `/ErLanding/${id}/inprogress-complaint`,
-      },
-    ];
+    {
+      label: "Pending Complaint",
+      icon: <IoIosInformationCircleOutline />,
+      route: `/ErLanding/${id}/pending-complaint`,
+    },
+    {
+      label: "InProgress Complaint",
+      icon: <RiNumbersLine />,
+      route: `/ErLanding/${id}/inprogress-complaint`,
+    },
+  ];
+  const fetchComplaint = async () => {
+    try {
+      const pending = await getComplaints();
+      setComplaints(pending.data);
+      const inprogress = await getComplaints(["In Progress"], 5);
 
-  useEffect(() => {
-    const fetchComplaint = async () => {
-      try {
-        const pending = await getComplaints(["Pending"], 5);
-        setComplaints(pending.data);
-        const inprogress = await getComplaints(["In Progress"], 5);
-      
-        if(inprogress.data){
-          let items = inprogress.data.filter(item=>item.severity==="Critical")
-           items = items.filter(item=>item.status==="In Progress")
+      if (inprogress.data) {
+        let items = inprogress.data.filter(
+          (item) => item.severity === "Critical"
+        );
+        items = items.filter((item) => item.status === "In Progress");
 
-          setInProgress(items);
-        }
-       
-      } catch (error) {
-        console.error("Error fetching user details:", error);
+        setInProgress(items);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    } 
+  };
+  useEffect(() => {
     fetchComplaint();
   }, []);
 
   return (
     <div>
-      <UserNavbar fullName={details?.fullName} isVolunteer={true} navbarItem={menuItems} />
+      <UserNavbar
+        fullName={details?.fullName}
+        isVolunteer={true}
+        navbarItem={menuItems}
+      />
 
       <Banner
         title="Emergency Responder"
@@ -92,10 +92,11 @@ const ErLanding = () => {
         </div>
 
         <div>
-          <h3 className="header ml-3 pt-6 text-2xl">In Progress Complaints...</h3>
+          <h3 className="header ml-3 pt-6 text-2xl">
+            In Progress Complaints...
+          </h3>
           <ComplaintCard items={inProgress} />
         </div>
-
       </div>
     </div>
   );
